@@ -49,11 +49,11 @@ FEATURES | TECHNICAL DESIGN:
         Networking with pipe-like structures -- sockets 
         Signaling to confirm whether or not the user really wants to exit
         - If they do, the opponent gets a victory and both clients exit?
-        Breakdown: (Refer to codenames section)
-            - Server / Subserver: KK
-            - Game Board (UI) / Save States: AJ
-            - Game logic / Signaling: KK
-            - Networking: AJ
+    Breakdown: (Refer to codenames section)
+        - Server / Subserver: KK
+        - Game Board (UI) / Save States: AJ
+        - Game logic / Signaling: KK
+        - Networking: AJ
 
 
 TIMELINE: 
