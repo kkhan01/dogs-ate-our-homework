@@ -9,3 +9,11 @@
 3. Run `./log.sh "<lastF>" "<devmsg>"`
 
 ---
+SDL
+
+#### Finding SDL
+
+Ubuntu
+*  dpkg -l | grep sdl
+
+
