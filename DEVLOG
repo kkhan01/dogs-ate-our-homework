@@ -7,3 +7,6 @@ fixed shell script to make it DEVLOG instead of devlog.txt
 -e linK -- 2018-01-09 15:14:29
 The dogs have started barking at the computer. We expect a translation by 2018-01-26.
 
+linK -- 2018-01-10 15:32:28
+Initial commit of server / subserver code
+
