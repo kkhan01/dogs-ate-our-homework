@@ -10,3 +10,6 @@ The dogs have started barking at the computer. We expect a translation by 2018-0
 linK -- 2018-01-10 15:32:28
 Initial commit of server / subserver code
 
+-e wengJ -- 2018-01-10 15:42:48
+Added initial sdl code, test for libsdl2-dev on linux computers
+
