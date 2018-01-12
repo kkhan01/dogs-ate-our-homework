@@ -9,9 +9,8 @@
 3. Run `./log.sh "<lastF>" "<devmsg>"`
 
 ---
-SDL
 
-#### Finding SDL
+### SDL
 
 Ubuntu
 *  dpkg -l | grep sdl
