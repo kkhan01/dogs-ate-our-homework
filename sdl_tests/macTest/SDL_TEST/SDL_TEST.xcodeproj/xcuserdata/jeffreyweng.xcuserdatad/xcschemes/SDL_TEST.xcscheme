@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0D3891D82007017500076D66"
+               BlueprintIdentifier = "0D562D4C200945BD0009DD4D"
                BuildableName = "SDL_TEST"
                BlueprintName = "SDL_TEST"
                ReferencedContainer = "container:SDL_TEST.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0D3891D82007017500076D66"
+            BlueprintIdentifier = "0D562D4C200945BD0009DD4D"
             BuildableName = "SDL_TEST"
             BlueprintName = "SDL_TEST"
             ReferencedContainer = "container:SDL_TEST.xcodeproj">
@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/jeffreyweng/Documents/School/SystemProjects/dogs-ate-our-homework/sdl_tests/SDL_TEST/SDL_TEST"
+      customWorkingDirectory = "/Users/jeffreyweng/Documents/School/SystemProjects/dogs-ate-our-homework/sdl_tests/macTest/SDL_TEST"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -56,7 +56,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0D3891D82007017500076D66"
+            BlueprintIdentifier = "0D562D4C200945BD0009DD4D"
             BuildableName = "SDL_TEST"
             BlueprintName = "SDL_TEST"
             ReferencedContainer = "container:SDL_TEST.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0D3891D82007017500076D66"
+            BlueprintIdentifier = "0D562D4C200945BD0009DD4D"
             BuildableName = "SDL_TEST"
             BlueprintName = "SDL_TEST"
             ReferencedContainer = "container:SDL_TEST.xcodeproj">

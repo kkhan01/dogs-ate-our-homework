@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D3891DD2007017500076D66 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3891DC2007017500076D66 /* main.cpp */; };
-		0D3891E5200701CC00076D66 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3891E4200701CC00076D66 /* SDL2.framework */; };
+		0D562D51200945BD0009DD4D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D562D50200945BD0009DD4D /* main.c */; };
+		0D562D592009465D0009DD4D /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D562D582009465D0009DD4D /* SDL2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0D3891D72007017500076D66 /* CopyFiles */ = {
+		0D562D4B200945BD0009DD4D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -24,52 +24,54 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0D3891D92007017500076D66 /* SDL_TEST */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_TEST; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D3891DC2007017500076D66 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		0D3891E4200701CC00076D66 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		0D562D4D200945BD0009DD4D /* SDL_TEST */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_TEST; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D562D50200945BD0009DD4D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		0D562D582009465D0009DD4D /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		0D562D5A2009484A0009DD4D /* hello_world.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = hello_world.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0D3891D62007017500076D66 /* Frameworks */ = {
+		0D562D4A200945BD0009DD4D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D3891E5200701CC00076D66 /* SDL2.framework in Frameworks */,
+				0D562D592009465D0009DD4D /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D3891D02007017500076D66 = {
+		0D562D44200945BD0009DD4D = {
 			isa = PBXGroup;
 			children = (
-				0D3891DB2007017500076D66 /* SDL_TEST */,
-				0D3891DA2007017500076D66 /* Products */,
-				0D3891E3200701CC00076D66 /* Frameworks */,
+				0D562D4F200945BD0009DD4D /* SDL_TEST */,
+				0D562D4E200945BD0009DD4D /* Products */,
+				0D562D572009465D0009DD4D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		0D3891DA2007017500076D66 /* Products */ = {
+		0D562D4E200945BD0009DD4D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0D3891D92007017500076D66 /* SDL_TEST */,
+				0D562D4D200945BD0009DD4D /* SDL_TEST */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0D3891DB2007017500076D66 /* SDL_TEST */ = {
+		0D562D4F200945BD0009DD4D /* SDL_TEST */ = {
 			isa = PBXGroup;
 			children = (
-				0D3891DC2007017500076D66 /* main.cpp */,
+				0D562D5A2009484A0009DD4D /* hello_world.bmp */,
+				0D562D50200945BD0009DD4D /* main.c */,
 			);
 			path = SDL_TEST;
 			sourceTree = "<group>";
 		};
-		0D3891E3200701CC00076D66 /* Frameworks */ = {
+		0D562D572009465D0009DD4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0D3891E4200701CC00076D66 /* SDL2.framework */,
+				0D562D582009465D0009DD4D /* SDL2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,13 +79,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0D3891D82007017500076D66 /* SDL_TEST */ = {
+		0D562D4C200945BD0009DD4D /* SDL_TEST */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0D3891E02007017500076D66 /* Build configuration list for PBXNativeTarget "SDL_TEST" */;
+			buildConfigurationList = 0D562D54200945BD0009DD4D /* Build configuration list for PBXNativeTarget "SDL_TEST" */;
 			buildPhases = (
-				0D3891D52007017500076D66 /* Sources */,
-				0D3891D62007017500076D66 /* Frameworks */,
-				0D3891D72007017500076D66 /* CopyFiles */,
+				0D562D49200945BD0009DD4D /* Sources */,
+				0D562D4A200945BD0009DD4D /* Frameworks */,
+				0D562D4B200945BD0009DD4D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -91,54 +93,54 @@
 			);
 			name = SDL_TEST;
 			productName = SDL_TEST;
-			productReference = 0D3891D92007017500076D66 /* SDL_TEST */;
+			productReference = 0D562D4D200945BD0009DD4D /* SDL_TEST */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0D3891D12007017500076D66 /* Project object */ = {
+		0D562D45200945BD0009DD4D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Jeffrey Weng";
 				TargetAttributes = {
-					0D3891D82007017500076D66 = {
+					0D562D4C200945BD0009DD4D = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 0D3891D42007017500076D66 /* Build configuration list for PBXProject "SDL_TEST" */;
+			buildConfigurationList = 0D562D48200945BD0009DD4D /* Build configuration list for PBXProject "SDL_TEST" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 0D3891D02007017500076D66;
-			productRefGroup = 0D3891DA2007017500076D66 /* Products */;
+			mainGroup = 0D562D44200945BD0009DD4D;
+			productRefGroup = 0D562D4E200945BD0009DD4D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0D3891D82007017500076D66 /* SDL_TEST */,
+				0D562D4C200945BD0009DD4D /* SDL_TEST */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0D3891D52007017500076D66 /* Sources */ = {
+		0D562D49200945BD0009DD4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D3891DD2007017500076D66 /* main.cpp in Sources */,
+				0D562D51200945BD0009DD4D /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0D3891DE2007017500076D66 /* Debug */ = {
+		0D562D52200945BD0009DD4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -186,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		0D3891DF2007017500076D66 /* Release */ = {
+		0D562D53200945BD0009DD4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -227,26 +229,24 @@
 			};
 			name = Release;
 		};
-		0D3891E12007017500076D66 /* Debug */ = {
+		0D562D55200945BD0009DD4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		0D3891E22007017500076D66 /* Release */ = {
+		0D562D56200945BD0009DD4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -254,24 +254,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0D3891D42007017500076D66 /* Build configuration list for PBXProject "SDL_TEST" */ = {
+		0D562D48200945BD0009DD4D /* Build configuration list for PBXProject "SDL_TEST" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0D3891DE2007017500076D66 /* Debug */,
-				0D3891DF2007017500076D66 /* Release */,
+				0D562D52200945BD0009DD4D /* Debug */,
+				0D562D53200945BD0009DD4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0D3891E02007017500076D66 /* Build configuration list for PBXNativeTarget "SDL_TEST" */ = {
+		0D562D54200945BD0009DD4D /* Build configuration list for PBXNativeTarget "SDL_TEST" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0D3891E12007017500076D66 /* Debug */,
-				0D3891E22007017500076D66 /* Release */,
+				0D562D55200945BD0009DD4D /* Debug */,
+				0D562D56200945BD0009DD4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 0D3891D12007017500076D66 /* Project object */;
+	rootObject = 0D562D45200945BD0009DD4D /* Project object */;
 }
