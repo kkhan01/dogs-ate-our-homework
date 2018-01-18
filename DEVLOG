@@ -13,3 +13,9 @@ Initial commit of server / subserver code
 -e wengJ -- 2018-01-10 15:42:48
 Added initial sdl code, test for libsdl2-dev on linux computers
 
+-e khanK + linK -- 2018-01-18 15:23:53
+hashed out some board logic
+
+linK + khanK -- 2018-01-18 15:26:17
+Added tetronimo pseudocode
+
