@@ -43,7 +43,38 @@ VIRTUAL WHITEBOARD: (Features that can be added to the finished base game)
 	- add to score
 	- changes all blocks above to 1
       - always active gravity function?
-      	- consistently moves all movable blocks down by 1
+      	- consistently moves all movable blocks down by 
+    - tetronimo pseudocode
+        struct tetronimo {
+            // Struct of how the tetronimo is arranged
+            struct arrangement;
+
+            // Is the tertonimo rotatable
+            // 0 if no
+            // 1 if yes
+            // Set to 0 once it touches a -1 block.
+            int rotatable;
+
+            // What is the space?
+            // -1 if the space is a set block
+            // 0 if the space is empty
+            // 1 if the space contains a moving block
+            int set;
+        }
+
+        struct arrangement {
+            struct row r1; // Row 1
+            struct row r2; // Row 2
+            struct row r3; // Row 3
+            struct row r4; // Row 4
+        }
+
+        struct row {
+            int c1; // Column 1
+            int c2; // Column 2
+            int c3; // Column 3
+            int c4; // Column 3
+        }
 
 USER INTERFACE:
     We will be using a GUI created from the library SDL.
