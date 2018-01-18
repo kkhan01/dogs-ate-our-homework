@@ -25,11 +25,25 @@ DESCRIPTION:
 
 
 VIRTUAL WHITEBOARD: (Features that can be added to the finished base game)
-    -Animated dog goes across the row and ‘eats’ it
-    -Sockets instead of pipes
-    -Spectator system
-    -Game won’t start until both players type `READY`
+    - Animated dog goes across the row and ‘eats’ it
+    - Sockets instead of pipes
+    - Spectator system
+    - Game won’t start until both players type `READY`
 
+    - Board
+      - consists of -1, 0, 1
+      	- -1 is blocks already set in place
+	- 0 is empty spaces where blocks can transverse through
+	- 1 is a block in motion
+	  - once it touches a -1 block, it changes to -1
+	    - triggers the next block out
+	  - has rotable attribute (binary)
+      - once a line is completely -1:
+      	- we remove the entire line
+	- add to score
+	- changes all blocks above to 1
+      - always active gravity function?
+      	- consistently moves all movable blocks down by 1
 
 USER INTERFACE:
     We will be using a GUI created from the library SDL.
@@ -55,10 +69,12 @@ FEATURES | TECHNICAL DESIGN:
         - Game logic / Signaling: KK
         - Networking: AJ
 
+STRETCH:
+	- Networking [moved due to abscence of a team member]
 
 TIMELINE: 
-    1970 JAN 01 00:00:00  - Birth of the universe
+    1970 JAN 01 00:00:00 - Birth of the universe
     2017 DEC 27 10:00:00 - Submitted design document
-    2017 DEC 30 --:--:--     - Have a board ready to go!  
     2018 JAN 01 00:00:01 - Learned SDL to the extent that we’re super comfortable
+    2018 JAN 20 --:--:-- - Have a board ready to go!  
     2018 JUN 21 13:00:00 - Graduate
