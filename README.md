@@ -12,7 +12,9 @@
 
 ### SDL
 
-Ubuntu
-*  dpkg -l | grep sdl
-
+Ubuntu (we focused on Linux machines, we can't gurantee others. not even Unix)
+ - Check to see if you have:
+   - dpkg -l | grep sdl
+ - To install:
+   - apt-get install libsdl2-dev
 
