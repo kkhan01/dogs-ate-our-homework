@@ -38,6 +38,8 @@ VIRTUAL WHITEBOARD: (Features that can be added to the finished base game)
 	  - once it touches a -1 block, it changes to -1
 	    - triggers the next block out
 	  - has rotable attribute (binary)
+        - rotate around the center block. top left pixel.
+        - the bottom most row always stays on the same level
       - once a line is completely -1:
       	- we remove the entire line
 	- add to score
