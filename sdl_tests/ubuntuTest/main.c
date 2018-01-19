@@ -1,9 +1,11 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
-#include "main.h"
 
-int SCREEN_WIDTH = 640;
-int SCREEN_HEIGHT = 480;
+int init();
+void close();
+
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
 
 //The window we'll be rendering to
 SDL_Window* window = NULL;
@@ -36,7 +38,7 @@ int init(){
 
 }
 
-void close(){
+void closeProgram(){
   //Destroy window
   SDL_DestroyWindow( window );
   window = NULL;
@@ -46,6 +48,30 @@ void close(){
 
 }
 
+void eventHandler(){
+  //loop flag
+  int quit = 0;
+
+  //Event Handler
+  SDL_Event event;
+  //While application is running
+  while(!quit){
+
+    //Handle Events
+    while(SDL_PollEvent(&event) != 0){
+
+      //User requests quit
+      if(event.type == SDL_QUIT){
+	quit = 1;
+      }
+    }
+
+    //Updating the surface
+    
+    SDL_UpdateWindowSurface(window);
+  }
+}
+
 
 int main( int argc, char* args[] ){
   if(!init()){
@@ -53,11 +79,9 @@ int main( int argc, char* args[] ){
   }
   else{
     //DO THINGS
-    screenSurface = SDL_GetWindowSurface(window);
-    SDL_UpdateWindowSurface(window);
-    SDL_Delay(2000);
+    eventHandler();
   }
 
-  close();
+  closeProgram();
   return 0;
 }
