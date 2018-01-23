@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0D61E82016DE8100E26765 /* map.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D61E72016DE8100E26765 /* map.c */; };
+		0D0D61EB2016E17F00E26765 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D0D61EA2016E17F00E26765 /* SDL2_image.framework */; };
 		0D562D51200945BD0009DD4D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D562D50200945BD0009DD4D /* main.c */; };
 		0D562D592009465D0009DD4D /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D562D582009465D0009DD4D /* SDL2.framework */; };
 /* End PBXBuildFile section */
@@ -24,10 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D0D61E62016DE0700E26765 /* map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map.h; sourceTree = "<group>"; };
+		0D0D61E72016DE8100E26765 /* map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = map.c; sourceTree = "<group>"; };
+		0D0D61E92016DF1400E26765 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		0D0D61EA2016E17F00E26765 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		0D0D61EF2016EEED00E26765 /* stoneFilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stoneFilled.png; path = sprites/stoneFilled.png; sourceTree = "<group>"; };
+		0D0D61F02016EEF300E26765 /* brickEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brickEmpty.png; path = sprites/brickEmpty.png; sourceTree = "<group>"; };
 		0D562D4D200945BD0009DD4D /* SDL_TEST */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_TEST; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D562D50200945BD0009DD4D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		0D562D582009465D0009DD4D /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
-		0D562D5A2009484A0009DD4D /* hello_world.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = hello_world.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0D61EB2016E17F00E26765 /* SDL2_image.framework in Frameworks */,
 				0D562D592009465D0009DD4D /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,6 +50,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D0D61EC2016E9EA00E26765 /* sprites */ = {
+			isa = PBXGroup;
+			children = (
+				0D0D61F02016EEF300E26765 /* brickEmpty.png */,
+				0D0D61EF2016EEED00E26765 /* stoneFilled.png */,
+			);
+			name = sprites;
+			sourceTree = "<group>";
+		};
 		0D562D44200945BD0009DD4D = {
 			isa = PBXGroup;
 			children = (
@@ -62,8 +79,11 @@
 		0D562D4F200945BD0009DD4D /* SDL_TEST */ = {
 			isa = PBXGroup;
 			children = (
-				0D562D5A2009484A0009DD4D /* hello_world.bmp */,
+				0D0D61EC2016E9EA00E26765 /* sprites */,
 				0D562D50200945BD0009DD4D /* main.c */,
+				0D0D61E92016DF1400E26765 /* main.h */,
+				0D0D61E62016DE0700E26765 /* map.h */,
+				0D0D61E72016DE8100E26765 /* map.c */,
 			);
 			path = SDL_TEST;
 			sourceTree = "<group>";
@@ -71,6 +91,7 @@
 		0D562D572009465D0009DD4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D0D61EA2016E17F00E26765 /* SDL2_image.framework */,
 				0D562D582009465D0009DD4D /* SDL2.framework */,
 			);
 			name = Frameworks;
@@ -133,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0D61E82016DE8100E26765 /* map.c in Sources */,
 				0D562D51200945BD0009DD4D /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +292,7 @@
 				0D562D56200945BD0009DD4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
