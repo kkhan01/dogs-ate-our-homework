@@ -22,18 +22,18 @@
      - `apt-cache search libsdl2-image`
  - *Installation*
    - Install SDL2:
-     - apt-get install libsdl2-dev
+     - `apt-get install libsdl2-dev`
    - Install Image Library for PNG files:
-     - apt-get install libsdl2-image-dev
+     - `apt-get install libsdl2-image-dev`
 #### Mac OS-X (On Xcode)
   - *Installation*
     - Download the .dmg for SDL2 on the webpage: [SDL2 WebPage](https://www.libsdl.org/download-2.0.php#source)
-    - Open the .dmg file and drag the SDL2.framework into your */Library/Frameworks* folder.
+    - Open the .dmg file and drag the **SDL2.framework** into your **/Library/Frameworks** folder.
     - Open a new Xcode Project
       - Select SDL Project
       - Build Phases
       - Link Binary with Libraries
-      - Press + and command+shift+g to find your SDL2.framework
+      - Press + and **command+shift+g** to find your SDL2.framework
       - Add it.
   - *Post-Installation*
     - In your Xcode Window
