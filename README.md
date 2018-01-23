@@ -12,7 +12,7 @@
 
 ### SDL Installation + Libraries
 
-**Ubuntu** 
+#### Ubuntu
  - *Pre-Installation*
    - Check to see if you have SDL:
      - `dpkg -l | grep sd` 
@@ -20,17 +20,14 @@
      - `apt-cache search libsdl2`
    - To find the current SDL_image version to install:
      - `apt-cache search libsdl2-image`
-     <br>
  - *Installation*
    - Install SDL2:
      - apt-get install libsdl2-dev
    - Install Image Library for PNG files:
      - apt-get install libsdl2-image-dev
-
-<br>
-**Mac OS-X** (On Xcode)
-  -*Installation*
-    - Download the .dmg for SDL2 on the webpage: [SDL2](https://www.libsdl.org/download-2.0.php#source)
+#### Mac OS-X (On Xcode)
+  - *Installation*
+    - Download the .dmg for SDL2 on the webpage: [SDL2 WebPage](https://www.libsdl.org/download-2.0.php#source)
     - Open the .dmg file and drag the SDL2.framework into your */Library/Frameworks* folder.
     - Open a new Xcode Project
       - Select SDL Project
@@ -38,12 +35,12 @@
       - Link Binary with Libraries
       - Press + and command+shift+g to find your SDL2.framework
       - Add it.
-  -*Post-Installation*
+  - *Post-Installation*
     - In your Xcode Window
       - Press Product
       	- Scheme
-	  - Edit Scheme...
-	    - Set custom working directory to your current working directory
+      - Edit Scheme...
+        - Set custom working directory to your current working directory
     
 
 
