@@ -1,7 +1,21 @@
-#include "main.h"
+#include "map.h"
+#include "textureManager.h"
+
+int init();
+void closeProgram();
+void eventHandler();
+int loadMedia();
+
+//The window we'll be rendering to
+SDL_Window* window = NULL;
+
+SDL_Texture* brickTexture = NULL;
+
+SDL_Texture* stoneTexture = NULL;
+
 
 const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_HEIGHT = 640;
 
 //Key press surfaces constants
 enum KeyPressSurfaces{
@@ -60,8 +74,20 @@ int init(){
     
 }
 
+//If there's loop for headers, move this
 int loadMedia(){
     int success = 1;
+    
+    brickTexture = loadTexture("SDL_TEST/sprites/brickEmpty.png");
+    stoneTexture = loadTexture("SDL_TEST/sprites/stoneFilled.png");
+    
+    loadMap("SDL_TEST/sprites/map01.dat");
+    
+    if(brickTexture == NULL || stoneTexture == NULL){
+        printf("Failed to load texture images\n");
+        success = 0;
+    }
+    
     
     
     return success;
@@ -70,8 +96,13 @@ int loadMedia(){
 
 void closeProgram(){
     
-    SDL_DestroyTexture(texture);
-    texture = NULL;
+    SDL_DestroyTexture(brickTexture);
+    brickTexture = NULL;
+    
+    SDL_DestroyTexture(stoneTexture);
+    stoneTexture = NULL;
+    
+    
     
     //Destroy window
     SDL_DestroyRenderer(renderer);
@@ -85,29 +116,12 @@ void closeProgram(){
     
 }
 
-SDL_Texture* loadTexture(char * filepath){
-    SDL_Texture* newTexture = NULL;
-    
-    SDL_Surface * tempSurface = IMG_Load(filepath);
-    if( tempSurface == NULL ){
-        printf( "Unable to load image %s! SDL_image Error: %s\n", filepath, IMG_GetError() );
-    }
-    else{
-        //Create texture from surface pixels
-        newTexture = SDL_CreateTextureFromSurface( renderer, tempSurface);
-        if( newTexture == NULL){
-            printf( "Unable to create texture from %s! SDL Error: %s\n", filepath, SDL_GetError() );
-        }
-        //Get rid of old loaded surface
-        SDL_FreeSurface( tempSurface );
-    }
-    
-    return newTexture;
-}
 
 void eventHandler(){
     //loop flag
     int quit = 0;
+    
+    unsigned int frameLimit = SDL_GetTicks() + 16;
     
     //Event Handler
     SDL_Event event;
@@ -153,17 +167,28 @@ void eventHandler(){
         
         //Updating the surface
         
+        //DRAWING TILE MAP
         SDL_RenderClear(renderer);
         
-        SDL_RenderCopy(renderer, texture, NULL, NULL);
+        drawMap();
         
         SDL_RenderPresent(renderer);
+        
+        //DELAY FOR CPU
+        
+        delay(frameLimit);
+        
+        frameLimit = SDL_GetTicks() + 16;
+        
+        
+        
         
     }
 }
 
 
 int main( int argc, char* args[] ){
+    
     if(!init()){
         printf( "Failed to initialize!\n" );
     }
@@ -173,6 +198,7 @@ int main( int argc, char* args[] ){
         }
         else{
             eventHandler();
+            
         }
     }
     

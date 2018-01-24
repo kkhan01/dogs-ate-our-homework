@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/jeffreyweng/Documents/School/SystemProjects/dogs-ate-our-homework/sdl_tests/macTest/SDL_TEST"
+      customWorkingDirectory = "/Users/jeffreyweng/Documents/School/SystemProjects/dogs-ate-our-homework/sdl_tests/sdlMac/SDL_TEST"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
