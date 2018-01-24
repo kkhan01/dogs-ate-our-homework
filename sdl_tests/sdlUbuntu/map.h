@@ -9,9 +9,29 @@
 #ifndef map_h
 #define map_h
 
-#include "main.h"
+#define TILE_MAX_Y 16
+#define TILE_MAX_X 10
+
+#define TILE_SIZE 32
+
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <errno.h>
+#include <SDL2/SDL.h>
+#include <SDL2_image/SDL_image.h>
 
 void loadMap();
 void drawMap();
+
+typedef struct Map{
+    int tile[TILE_MAX_Y][TILE_MAX_X]; //(16,10)
+}Map;
+
+void drawImage(SDL_Texture *image, int x, int y);
+
+extern SDL_Texture* brickTexture;
+
+extern SDL_Texture* stoneTexture;
 
 #endif /* map_h */
