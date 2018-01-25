@@ -10,6 +10,11 @@ tetronimos = {
     {0b0110110000000000, 0b0100011000100000, 0b0000011011000000, 0b1000110001000000}  // S    
 };
 
+// Returns absolute position of the block
+unsigned int tet_location(int x, int y) {
+    return 0b1000000000000000 >> (x + y * 4);
+}
+
 // Moves left if possible
 void move_tet_left() {
     struct tet_block tet = cur_piece;
@@ -63,5 +68,17 @@ void rotate_tet(int rot_type) {
     return 0;
 }
 
-void set_tet_inplace(); // Sets the block in place (Reaches bottom)
-boolean is_tet_legal(); // Checks if the block is overlapping anything. True if not overlapping.
+// Checks if the block is overlapping anything. True if not overlapping.
+boolean is_tet_legal(struct tet_block tet) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            int x = tet.x + i;
+            int y = tet.y + j;
+            if (tetronimos[tet.type][tet.rotation]&tet_location(i, j)) {
+                if (x < 0 || x >= 10 || y < 0 || y >= 20) // If the block is our of the board
+                    return 0;
+            }
+        }
+    }
+    return 1;
+}
