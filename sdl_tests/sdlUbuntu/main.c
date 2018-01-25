@@ -252,17 +252,17 @@ void eventHandler(){
 
 
 void clear_row(){
-  int filled = 0;
-  int counter = 0;
-  while(counter < 10 && map[15][counter] != 0){
+  int filled = 0;//will be used to make sure last row was filled
+  int counter = 0;//counter to iterate with in loops over board
+  while(counter < 10 && map[15][counter] != 0){//checks to see if last row filed
     filled++;
   }
-  if(filled == 10){
+  if(filled == 10){//it was filled, gotta clear it up
     while(counter < 10){
       map[15][counter] = 0)
       filled++;
   }
-  else{
+  else{//it wasnt filled, gotta restart function
     filled = 0;
     counter = 0;
   }
