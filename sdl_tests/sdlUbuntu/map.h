@@ -13,7 +13,7 @@
 #define TILE_MAX_X 10
 
 #define TILE_SIZE 32
-#define FONTSIZE 24
+#define FONTSIZE 36
 
 
 
