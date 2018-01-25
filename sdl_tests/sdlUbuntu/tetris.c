@@ -1,6 +1,6 @@
 #include "tetris.h"
 
-tetronimos = {
+unsigned int tetronimos[7][4] = {
     {0b0100010001000100, 0b0000111100000000, 0b0010001000100010, 0b0000000011110000}, // I
     {0b0110010001000000, 0b0000111000100000, 0b0100010011000000, 0b1000111000000000}, // L
     {0b0100111000000000, 0b0100011001000000, 0b0000111001000000, 0b0100110001000000}, // T
@@ -33,15 +33,12 @@ void move_tet(int move_type) {
     } else if (move_type == 2) { // Down
         tet.y--;
     } else {
-        printf("You messed up. " + move_type + " is not a valid move type.");
-        return 0;
+        printf("You messed up. %d is not a valid move type.", move_type);
     }
 
     if (is_tet_legal(tet)) {
         cur_piece = tet; // If the move is valid, replace the board block with moved block
     }
-
-    return 0;
 }
 
 void rotate_tet(int rot_type) {
@@ -57,15 +54,12 @@ void rotate_tet(int rot_type) {
         else
             tet.rotation--;
     } else {
-        printf("You messed up. " + rot_type + " is not a valid rotation type.");
-        return 0;
+        printf("You messed up. %d is not a valid rotation type.", rot_type);
     }
 
-    if (is_tet_legal(tet) || tet_wall_kick(&p)) {
+    if (is_tet_legal(tet) || tet_wall_kick(&tet)) {
         cur_piece = tet; // If the rotation is valid or a wall kick is available, replace the board block with rotated block.
     }
-
-    return 0;
 }
 
 // Checks if the block is overlapping anything. True if not overlapping.

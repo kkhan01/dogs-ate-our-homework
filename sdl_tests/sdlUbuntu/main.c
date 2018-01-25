@@ -200,6 +200,12 @@ void eventHandler(){
                         printf("Pressed Right\n");
                         break;
                         
+                    case SDLK_j:
+                        printf("Pressed J (Left rotate)");
+
+                    case SDLK_k:
+                        printf("Pressed k (Right rotate)");
+                    
                     default:
                         printf("Unknown Key Touch\n");
                         break;
