@@ -13,6 +13,9 @@
 #define TILE_MAX_X 10
 
 #define TILE_SIZE 32
+#define FONTSIZE 24
+
+
 
 #include <fcntl.h>
 #include <sys/stat.h>
@@ -20,6 +23,8 @@
 #include <errno.h>
 #include <SDL2/SDL.h>
 #include <SDL2_image/SDL_image.h>
+#include <SDL2_ttf/SDL_ttf.h>
+
 
 void loadMap();
 void drawMap();
@@ -27,6 +32,8 @@ void drawMap();
 typedef struct Map{
     int tile[TILE_MAX_Y][TILE_MAX_X]; //(16,10)
 }Map;
+
+extern Map map;
 
 void drawImage(SDL_Texture *image, int x, int y);
 
