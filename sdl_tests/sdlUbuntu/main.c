@@ -259,8 +259,9 @@ void clear_row(){
   }
   if(filled == 10){//it was filled, gotta clear it up
     while(counter < 10){
-      map.tile[15][counter] = 0)
+      map.tile[15][counter] = 0;
       filled++;
+    }
   }
   else{//it wasnt filled, gotta restart function
     filled = 0;
