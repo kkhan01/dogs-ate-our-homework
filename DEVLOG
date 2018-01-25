@@ -40,3 +40,6 @@ finished tile mapping system, fixed duplication bugs with header files, separate
 linK -- 2018-01-25 14:13:30
 Added binary configurations for each Tetronimo and a struct for their data
 
+-e wengJ -- 2018-01-25 14:44:38
+added a new countdown Timer, now exits when timer hits 0
+
