@@ -15,8 +15,6 @@
 #define TILE_SIZE 32
 #define FONTSIZE 36
 
-
-
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <unistd.h>

@@ -1,22 +1,19 @@
-# CC Specifies Compiler we're using
-CC=gcc
+#OBJS specifies which files to compile as part of the project
+OBJS = main.c textureManager.c tetris.c map.c
 
-# Things to compile
-SRC=$(wildcard *.c)
-OBJS=$(SRC:.c=.o)
+#CC specifies which compiler we're using
+CC = gcc
 
-# Libraries to include in the compile
-LIBS=-lSDL2 -lSDL2_ttf -lSDL2_image
+#COMPILER_FLAGS specifies the additional compilation options we're using
+# -w suppresses all warnings
+COMPILER_FLAGS = -w
 
-# Output name
-OUTPUT=game
+#LINKER_FLAGS specifies the libraries we're linking against
+LINKER_FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
 
-all: $(OBJS)
-	$(CC) $(OBJS) -o $(OUTPUT) $(LIBS)
+#OBJ_NAME specifies the name of our exectuable
+OBJ_NAME = game
 
-%.o: %.c
-	$(CC) -c -o $@ $<
-	
-clean:
-	rm *.o
-	rm $(OUTPUT)
+#This is the target that compiles our executable
+all : $(OBJS)
+	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
