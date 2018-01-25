@@ -40,3 +40,6 @@ finished tile mapping system, fixed duplication bugs with header files, separate
 linK -- 2018-01-25 14:13:30
 Added binary configurations for each Tetronimo and a struct for their data
 
+linK -- 2018-01-25 14:36:21
+Added tetronimo movement & rotation
+
