@@ -43,6 +43,10 @@ Added binary configurations for each Tetronimo and a struct for their data
 linK -- 2018-01-25 14:36:21
 Added tetronimo movement & rotation
 
+wengJ -- 2018-01-25 14:44:38
+added a new countdown Timer, now exits when timer hits 0
+
 linK -- 2018-01-25 14:53:39
 Added check to see if block is move/rotatable
+
 
