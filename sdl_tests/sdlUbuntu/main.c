@@ -103,7 +103,7 @@ void drawText(char* string, int size, int x, int y,
     int w = 0;
     int h = 0;
     
-    TTF_Font* font = TTF_OpenFont("SDL_TEST/fonts/arial.ttf", size);
+    TTF_Font* font = TTF_OpenFont("fonts/arial.ttf", size);
     
     SDL_Color color = {c1, c2, c3};
     
