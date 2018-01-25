@@ -20,11 +20,15 @@
      - `apt-cache search libsdl2`
    - To find the current SDL_image version to install:
      - `apt-cache search libsdl2-image`
+   - To find the current SDL_ttf version to install:
+     - `apt-cache search libsdl2-ttf`
  - *Installation*
    - Install SDL2:
      - `apt-get install libsdl2-dev`
    - Install Image Library for PNG files:
      - `apt-get install libsdl2-image-dev`
+   - Install SDL_ttf:
+     - `apt-get install libsdl2-ttf-dev`
 #### Mac OS-X (On Xcode)
   - *Installation*
     - Download the .dmg for SDL2 on the webpage: [SDL2 WebPage](https://www.libsdl.org/download-2.0.php#source)
