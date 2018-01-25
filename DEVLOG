@@ -37,3 +37,6 @@ updated README: better installation instructions
 -e wengJ -- 2018-01-24 01:05:25
 finished tile mapping system, fixed duplication bugs with header files, separated functions into different files: textures vs tile maps vs game driver
 
+linK -- 2018-01-25 14:13:30
+Added binary configurations for each Tetronimo and a struct for their data
+
