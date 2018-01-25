@@ -104,6 +104,10 @@ void drawText(char* string, int size, int x, int y,
     int h = 0;
     
     TTF_Font* font = TTF_OpenFont("fonts/arial.ttf", size);
+
+    if(font == NULL){
+        printf("Failed to load font\n");
+    }
     
     SDL_Color color = {c1, c2, c3};
     
