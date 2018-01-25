@@ -43,3 +43,6 @@ Added binary configurations for each Tetronimo and a struct for their data
 linK -- 2018-01-25 14:36:21
 Added tetronimo movement & rotation
 
+linK -- 2018-01-25 14:53:39
+Added check to see if block is move/rotatable
+
