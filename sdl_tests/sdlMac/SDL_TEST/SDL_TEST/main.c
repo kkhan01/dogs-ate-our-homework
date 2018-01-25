@@ -97,14 +97,20 @@ int loadMedia(){
     return success;
 }
 
-void drawText(char* string, int size, int x, int y, int w, int h,
+void drawText(char* string, int size, int x, int y,
               int c1, int c2, int c3){
+    
+    int w = 0;
+    int h = 0;
+    
     TTF_Font* font = TTF_OpenFont("SDL_TEST/fonts/arial.ttf", size);
     
     SDL_Color color = {c1, c2, c3};
     
     SDL_Surface* textSurface = TTF_RenderText_Solid(font, string, color);
     SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+    
+    SDL_QueryTexture(textTexture, NULL, NULL, &w, &h);
     
     SDL_Rect textLocation = {x, y, w, h};
     
@@ -148,10 +154,17 @@ void eventHandler(){
     
     unsigned int frameLimit = SDL_GetTicks() + 16;
     
+    //Time
     char * timeText;
     char * numstr[21];
     int countdown = 1000000;
     int countdown_seconds = 180;
+    
+    //Score
+    
+    char * scoreText;
+    char * numstrScore[21];
+    int score = 0;
     
     //Event Handler
     SDL_Event event;
@@ -207,12 +220,19 @@ void eventHandler(){
         if(countdown % 50 == 0){
             countdown_seconds -= 1;
         }
-        
+        //Time
         sprintf(numstr, "%d", countdown_seconds);
         timeText = numstr;
         
-        drawText("Time:", FONTSIZE, SCREEN_WIDTH/2 + SCREEN_WIDTH/10, SCREEN_HEIGHT/2 - SCREEN_WIDTH/4, 100, 50, 0, 0, 0);
-        drawText(timeText, FONTSIZE, SCREEN_WIDTH/2 + SCREEN_WIDTH/4, SCREEN_HEIGHT/2 - SCREEN_WIDTH/4, 100, 50, 0, 0, 0);
+        //Score
+        sprintf(numstrScore, "%d", score);
+        scoreText = numstrScore;
+        
+        
+        drawText("Time:", FONTSIZE, SCREEN_WIDTH/2 + SCREEN_WIDTH/10, SCREEN_HEIGHT/2 - SCREEN_WIDTH/4, 0, 0, 0);
+        drawText(timeText, FONTSIZE, SCREEN_WIDTH/2 + SCREEN_WIDTH/4, SCREEN_HEIGHT/2 - SCREEN_WIDTH/4, 0, 0, 0);
+        drawText("Score:", FONTSIZE, SCREEN_WIDTH/2 + SCREEN_WIDTH/10, SCREEN_HEIGHT/2, 0, 0, 0);
+        drawText(scoreText, FONTSIZE, SCREEN_WIDTH/2 + SCREEN_WIDTH/3, SCREEN_HEIGHT/2, 0, 0, 0);
         
         SDL_RenderPresent(renderer);
         
