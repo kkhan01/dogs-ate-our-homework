@@ -15,7 +15,7 @@ SDL_Texture* stoneTexture = NULL;
 
 
 const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 640;
+const int SCREEN_HEIGHT = 512;
 
 //Key press surfaces constants
 enum KeyPressSurfaces{
