@@ -31,13 +31,13 @@
 		0D0D61E62016DE0700E26765 /* map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = map.h; sourceTree = "<group>"; };
 		0D0D61E72016DE8100E26765 /* map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = map.c; sourceTree = "<group>"; };
 		0D0D61EA2016E17F00E26765 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
-		0D0D61EF2016EEED00E26765 /* stoneFilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stoneFilled.png; path = sprites/stoneFilled.png; sourceTree = "<group>"; };
-		0D0D61F02016EEF300E26765 /* brickEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brickEmpty.png; path = sprites/brickEmpty.png; sourceTree = "<group>"; };
 		0D1AA74C201828A80032895F /* textureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textureManager.h; sourceTree = "<group>"; };
 		0D1AA74D201828A80032895F /* textureManager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textureManager.c; sourceTree = "<group>"; };
 		0D1AA754201848240032895F /* map01.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map01.dat; path = sprites/map01.dat; sourceTree = "<group>"; };
 		0D1AA755201A4D020032895F /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
 		0D1AA75C201A5DEB0032895F /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arial.ttf; path = fonts/arial.ttf; sourceTree = "<group>"; };
+		0D1AA75E201A78AD0032895F /* tetrisBlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetrisBlock.png; path = sprites/tetrisBlock.png; sourceTree = "<group>"; };
+		0D1AA760201A7A8B0032895F /* unfilledBlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unfilledBlock.png; path = sprites/unfilledBlock.png; sourceTree = "<group>"; };
 		0D562D4D200945BD0009DD4D /* SDL_TEST */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_TEST; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D562D50200945BD0009DD4D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		0D562D582009465D0009DD4D /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -60,9 +60,9 @@
 		0D0D61EC2016E9EA00E26765 /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				0D1AA760201A7A8B0032895F /* unfilledBlock.png */,
+				0D1AA75E201A78AD0032895F /* tetrisBlock.png */,
 				0D1AA754201848240032895F /* map01.dat */,
-				0D0D61F02016EEF300E26765 /* brickEmpty.png */,
-				0D0D61EF2016EEED00E26765 /* stoneFilled.png */,
 			);
 			name = sprites;
 			sourceTree = "<group>";

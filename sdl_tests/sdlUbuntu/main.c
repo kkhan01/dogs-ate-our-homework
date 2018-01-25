@@ -9,9 +9,9 @@ int loadMedia();
 //The window we'll be rendering to
 SDL_Window* window = NULL;
 
-SDL_Texture* brickTexture = NULL;
+SDL_Texture* tetrisBlockTexture = NULL;
 
-SDL_Texture* stoneTexture = NULL;
+SDL_Texture* unfilledBlockTexture = NULL;
 
 
 const int SCREEN_WIDTH = 640;
@@ -82,12 +82,12 @@ int init(){
 int loadMedia(){
     int success = 1;
     
-    brickTexture = loadTexture("SDL_TEST/sprites/brickEmpty.png");
-    stoneTexture = loadTexture("SDL_TEST/sprites/stoneFilled.png");
+    tetrisBlockTexture = loadTexture("SDL_TEST/sprites/tetrisBlock.png");
+    unfilledBlockTexture = loadTexture("SDL_TEST/sprites/unfilledBlock.png");
     
     loadMap("SDL_TEST/sprites/map01.dat");
     
-    if(brickTexture == NULL || stoneTexture == NULL){
+    if(tetrisBlockTexture == NULL || unfilledBlockTexture == NULL){
         printf("Failed to load texture images\n");
         success = 0;
     }
@@ -126,11 +126,11 @@ void drawText(char* string, int size, int x, int y,
 
 void closeProgram(){
     
-    SDL_DestroyTexture(brickTexture);
-    brickTexture = NULL;
+    SDL_DestroyTexture(tetrisBlockTexture);
+    tetrisBlockTexture = NULL;
     
-    SDL_DestroyTexture(stoneTexture);
-    stoneTexture = NULL;
+    SDL_DestroyTexture(unfilledBlockTexture);
+    unfilledBlockTexture = NULL;
     
     
     

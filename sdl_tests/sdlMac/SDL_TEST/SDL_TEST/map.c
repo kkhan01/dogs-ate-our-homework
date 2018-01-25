@@ -39,11 +39,11 @@ void drawMap(){
     
     for(y_coord = 0; y_coord < TILE_MAX_Y; y_coord++){
         for(x_coord = 0; x_coord < TILE_MAX_X; x_coord++){
-            if(map.tile[y_coord][x_coord] != 0){
-                drawImage(stoneTexture, x_coord * TILE_SIZE, y_coord * TILE_SIZE);
+            if(map.tile[y_coord][x_coord] == 0){
+                drawImage(unfilledBlockTexture, x_coord * TILE_SIZE, y_coord * TILE_SIZE);
             }
-            else if(map.tile[y_coord][x_coord] == 0){
-                drawImage(brickTexture, x_coord * TILE_SIZE, y_coord * TILE_SIZE);
+            else if(map.tile[y_coord][x_coord] != 0){
+                drawImage(tetrisBlockTexture, x_coord * TILE_SIZE, y_coord * TILE_SIZE);
             }
         }
     }
