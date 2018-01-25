@@ -11,6 +11,7 @@
 		0D1AA74E201828A80032895F /* textureManager.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AA74D201828A80032895F /* textureManager.c */; };
 		0D1AA752201838CB0032895F /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D562D582009465D0009DD4D /* SDL2.framework */; };
 		0D1AA753201838F50032895F /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D0D61EA2016E17F00E26765 /* SDL2_image.framework */; };
+		0D1AA756201A4D020032895F /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1AA755201A4D020032895F /* SDL2_ttf.framework */; };
 		0D562D51200945BD0009DD4D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D562D50200945BD0009DD4D /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,8 @@
 		0D1AA74C201828A80032895F /* textureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textureManager.h; sourceTree = "<group>"; };
 		0D1AA74D201828A80032895F /* textureManager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = textureManager.c; sourceTree = "<group>"; };
 		0D1AA754201848240032895F /* map01.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map01.dat; path = sprites/map01.dat; sourceTree = "<group>"; };
+		0D1AA755201A4D020032895F /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
+		0D1AA75C201A5DEB0032895F /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arial.ttf; path = fonts/arial.ttf; sourceTree = "<group>"; };
 		0D562D4D200945BD0009DD4D /* SDL_TEST */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_TEST; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D562D50200945BD0009DD4D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		0D562D582009465D0009DD4D /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D1AA756201A4D020032895F /* SDL2_ttf.framework in Frameworks */,
 				0D1AA753201838F50032895F /* SDL2_image.framework in Frameworks */,
 				0D1AA752201838CB0032895F /* SDL2.framework in Frameworks */,
 			);
@@ -61,6 +65,14 @@
 				0D0D61EF2016EEED00E26765 /* stoneFilled.png */,
 			);
 			name = sprites;
+			sourceTree = "<group>";
+		};
+		0D1AA75B201A5DB90032895F /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0D1AA75C201A5DEB0032895F /* arial.ttf */,
+			);
+			name = fonts;
 			sourceTree = "<group>";
 		};
 		0D562D44200945BD0009DD4D = {
@@ -83,6 +95,7 @@
 		0D562D4F200945BD0009DD4D /* SDL_TEST */ = {
 			isa = PBXGroup;
 			children = (
+				0D1AA75B201A5DB90032895F /* fonts */,
 				0D0D61EC2016E9EA00E26765 /* sprites */,
 				0D562D50200945BD0009DD4D /* main.c */,
 				0D0D61E62016DE0700E26765 /* map.h */,
@@ -96,6 +109,7 @@
 		0D562D572009465D0009DD4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D1AA755201A4D020032895F /* SDL2_ttf.framework */,
 				0D0D61EA2016E17F00E26765 /* SDL2_image.framework */,
 				0D562D582009465D0009DD4D /* SDL2.framework */,
 			);

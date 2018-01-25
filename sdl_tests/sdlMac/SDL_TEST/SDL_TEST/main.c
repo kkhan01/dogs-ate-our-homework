@@ -31,6 +31,10 @@ enum KeyPressSurfaces{
 
 int init(){
     int success = 1;
+    if(TTF_Init() < 0){
+        printf("ttf could not initialize! SDL_Error: %s\n", SDL_GetError());
+        success = 0;
+    }
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
         printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
         success = 0;
@@ -93,6 +97,26 @@ int loadMedia(){
     return success;
 }
 
+void drawText(char* string, int size, int x, int y, int w, int h,
+              int c1, int c2, int c3){
+    TTF_Font* font = TTF_OpenFont("SDL_TEST/fonts/arial.ttf", size);
+    
+    SDL_Color color = {c1, c2, c3};
+    
+    SDL_Surface* textSurface = TTF_RenderText_Solid(font, string, color);
+    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+    
+    SDL_Rect textLocation = {x, y, w, h};
+    
+    SDL_RenderCopy(renderer, textTexture, NULL, &textLocation);
+    
+    SDL_FreeSurface(textSurface);
+    
+    SDL_DestroyTexture(textTexture);
+    
+    TTF_CloseFont(font);
+}
+
 
 void closeProgram(){
     
@@ -111,8 +135,9 @@ void closeProgram(){
     window = NULL;
     
     //Quit SDL subsystems
-    SDL_Quit();
     IMG_Quit();
+    TTF_Quit();
+    SDL_Quit();
     
 }
 
@@ -123,6 +148,11 @@ void eventHandler(){
     
     unsigned int frameLimit = SDL_GetTicks() + 16;
     
+    char * timeText;
+    char * numstr[21];
+    int countdown = 1000000;
+    int countdown_seconds = 180;
+    
     //Event Handler
     SDL_Event event;
     //While application is running
@@ -132,7 +162,7 @@ void eventHandler(){
         while(SDL_PollEvent(&event) != 0){
             
             //User requests quit
-            if(event.type == SDL_QUIT){
+            if(event.type == SDL_QUIT || countdown_seconds <= 0){
                 quit = 1;
             }
             
@@ -170,12 +200,26 @@ void eventHandler(){
         //DRAWING TILE MAP
         SDL_RenderClear(renderer);
         
+        
+        
         drawMap();
+        
+        if(countdown % 50 == 0){
+            countdown_seconds -= 1;
+        }
+        
+        sprintf(numstr, "%d", countdown_seconds);
+        timeText = numstr;
+        
+        drawText("Time:", FONTSIZE, SCREEN_WIDTH/2 + SCREEN_WIDTH/10, SCREEN_HEIGHT/2 - SCREEN_WIDTH/4, 100, 50, 0, 0, 0);
+        drawText(timeText, FONTSIZE, SCREEN_WIDTH/2 + SCREEN_WIDTH/4, SCREEN_HEIGHT/2 - SCREEN_WIDTH/4, 100, 50, 0, 0, 0);
         
         SDL_RenderPresent(renderer);
         
         //DELAY FOR CPU
+        //printf("%d\n", frameLimit);
         
+        countdown -= 1;
         delay(frameLimit);
         
         frameLimit = SDL_GetTicks() + 16;
