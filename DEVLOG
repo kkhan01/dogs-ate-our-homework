@@ -53,3 +53,6 @@ Added check to see if block is move/rotatable
 -e wengJ -- 2018-01-25 15:02:53
 added score UI, fixed text stretching
 
+-e wengJ -- 2018-01-25 15:33:07
+updated README.md: more installation instructions
+

@@ -35,8 +35,11 @@ extern Map map;
 
 void drawImage(SDL_Texture *image, int x, int y);
 
-extern SDL_Texture* brickTexture;
+extern SDL_Texture* tetrisBlockTexture;
 
-extern SDL_Texture* stoneTexture;
+extern SDL_Texture* unfilledBlockTexture;
 
+
+void clear_row();
+void gravity();
 #endif /* map_h */

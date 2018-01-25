@@ -32,13 +32,15 @@
 #### Mac OS-X (On Xcode)
   - *Installation*
     - Download the .dmg for SDL2 on the webpage: [SDL2 WebPage](https://www.libsdl.org/download-2.0.php#source)
-    - Open the .dmg file and drag the **SDL2.framework** into your **/Library/Frameworks** folder.
+    - Download the .dmg for SDL2 image on the webpage: [SDL2 Image Webpage](https://www.libsdl.org/projects/SDL_image/)
+    - Download the .dmg for SDL2 ttf on the webpage: [SDL2 TTF Webpage](https://www.libsdl.org/projects/SDL_ttf/)
+    - Open the .dmg file and drag the **SDL2.framework**, **SDL2_image.framework**, **SDL2_ttf.framework** into your **/Library/Frameworks** folder.
     - Open a new Xcode Project
       - Select SDL Project
       - Build Phases
       - Link Binary with Libraries
-      - Press + and **command+shift+g** to find your SDL2.framework
-      - Add it.
+      - Press + and **command+shift+g** to find your SDL2.framework, SDL2_image.framework, and SDL2_ttf.framework
+      - Add them.
   - *Post-Installation*
     - In your Xcode Window
       - Press Product

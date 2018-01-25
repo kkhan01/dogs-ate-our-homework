@@ -9,9 +9,9 @@ int loadMedia();
 //The window we'll be rendering to
 SDL_Window* window = NULL;
 
-SDL_Texture* brickTexture = NULL;
+SDL_Texture* tetrisBlockTexture = NULL;
 
-SDL_Texture* stoneTexture = NULL;
+SDL_Texture* unfilledBlockTexture = NULL;
 
 
 const int SCREEN_WIDTH = 640;
@@ -82,12 +82,12 @@ int init(){
 int loadMedia(){
     int success = 1;
     
-    brickTexture = loadTexture("SDL_TEST/sprites/brickEmpty.png");
-    stoneTexture = loadTexture("SDL_TEST/sprites/stoneFilled.png");
+    tetrisBlockTexture = loadTexture("SDL_TEST/sprites/tetrisBlock.png");
+    unfilledBlockTexture = loadTexture("SDL_TEST/sprites/unfilledBlock.png");
     
     loadMap("SDL_TEST/sprites/map01.dat");
     
-    if(brickTexture == NULL || stoneTexture == NULL){
+    if(tetrisBlockTexture == NULL || unfilledBlockTexture == NULL){
         printf("Failed to load texture images\n");
         success = 0;
     }
@@ -126,11 +126,11 @@ void drawText(char* string, int size, int x, int y,
 
 void closeProgram(){
     
-    SDL_DestroyTexture(brickTexture);
-    brickTexture = NULL;
+    SDL_DestroyTexture(tetrisBlockTexture);
+    tetrisBlockTexture = NULL;
     
-    SDL_DestroyTexture(stoneTexture);
-    stoneTexture = NULL;
+    SDL_DestroyTexture(unfilledBlockTexture);
+    unfilledBlockTexture = NULL;
     
     
     
@@ -250,6 +250,42 @@ void eventHandler(){
     }
 }
 
+
+void clear_row(){
+  int filled = 0;//will be used to make sure last row was filled
+  int counter = 0;//counter to iterate with in loops over board
+  while(counter < 10 && map[15][counter] != 0){//checks to see if last row filed
+    filled++;
+  }
+  if(filled == 10){//it was filled, gotta clear it up
+    while(counter < 10){
+      map[15][counter] = 0)
+      filled++;
+  }
+  else{//it wasnt filled, gotta restart function
+    filled = 0;
+    counter = 0;
+  }
+  //function ends
+}
+
+void gravity(){
+  int xcounter = 0;//counter to iterate with in loops over board
+  int ycounter = 0;//counter to iterate with in loops over board
+  for(ycounter = 14; ycounter > 0; ycounter--){
+    for(xcounter = 9; xcounter > 0; xcounter--){
+      if(map[ycounter][xcounter] == -1){//block that is the bottom or has touched another block touching the bottom
+	if(map[ycounter+1][xcounter] == 0){
+	  map[ycounter+1][xcounter] = -1;
+	  map[ycounter][xcounter] = 0;
+	}
+	//else stays in place i guess
+      }
+      //else it was empty space or a moving tetrimo
+      //im thinking we have another method handle tetrimo movements
+    }
+  }
+}
 
 int main( int argc, char* args[] ){
     
