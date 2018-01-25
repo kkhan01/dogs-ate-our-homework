@@ -61,8 +61,8 @@ void rotate_tet(int rot_type) {
         return 0;
     }
 
-    if (is_tet_legal(tet)) {
-        cur_piece = tet; // If the rotation is valid, replace the board block with rotated block.
+    if (is_tet_legal(tet) || tet_wall_kick(&p)) {
+        cur_piece = tet; // If the rotation is valid or a wall kick is available, replace the board block with rotated block.
     }
 
     return 0;
@@ -81,4 +81,19 @@ boolean is_tet_legal(struct tet_block tet) {
         }
     }
     return 1;
+}
+
+boolean tet_wall_kick(struct tet_block *tet) {
+    tet->x -= 1; // Try to move it left
+    if (is_tet_legal(*tet))
+        return 1; // Success
+    tet->x += 2; // Moves back and then one more to the right. Try to move it right
+    if (is_tet_legal(*tet))
+        return 1; // Success
+    tet->x -= 1; // Moves back to where it was
+    tet->y += 1; // Move up one
+    if (is_tet_legal(*tet))
+        return 1; // Success
+    tet->y -= 1; // Return to where it was
+    return 0; // Failure
 }
