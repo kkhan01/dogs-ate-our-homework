@@ -251,6 +251,24 @@ void eventHandler(){
 }
 
 
+void clear_row(){
+  int filled = 0;
+  int counter = 0;
+  while(counter < 10 && map[15][counter] != 0){
+    filled++;
+  }
+  if(filled == 10){
+    while(counter < 10){
+      map[15][counter] = 0)
+      filled++;
+  }
+  else{
+    filled = 0;
+    counter = 0;
+  }
+  //function ends
+}
+
 int main( int argc, char* args[] ){
     
     if(!init()){

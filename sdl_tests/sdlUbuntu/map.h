@@ -41,4 +41,6 @@ extern SDL_Texture* tetrisBlockTexture;
 
 extern SDL_Texture* unfilledBlockTexture;
 
+
+void clear_row();
 #endif /* map_h */
