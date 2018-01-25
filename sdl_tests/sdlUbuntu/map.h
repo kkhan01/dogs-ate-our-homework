@@ -15,15 +15,13 @@
 #define TILE_SIZE 32
 #define FONTSIZE 36
 
-
-
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <errno.h>
 #include <SDL2/SDL.h>
-#include <SDL2_image/SDL_image.h>
-#include <SDL2_ttf/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 
 void loadMap();
