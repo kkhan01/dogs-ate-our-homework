@@ -173,6 +173,7 @@ void ran_gen_blocks() { // Generates the random blocks
     unsigned int tet_types[7] = {0, 1, 2, 3, 4, 5, 6};
     for (int i = 0; i < 7; i++) {
         int j = rand() % (7 - i);
+        printf("J: %d", j);
         printf("Tet: %x\n", tet_types[j]);
         tets_queue[i] = tet_types[j];
         for (; j < 6; j++) {
