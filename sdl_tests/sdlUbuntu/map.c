@@ -134,143 +134,143 @@ int controlledGravity(){
 
 
 void spawn() {
-    next_tet();
-    printf("Current type: %d\n", cur_piece.type);
-    cur_piece.type = tets_queue[cur_block_num++];
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-                map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
-            }
-        }
+  next_tet();
+  //printf("Current type: %d\n", cur_piece.type);
+  cur_piece.type = tets_queue[cur_block_num++];
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+      }
     }
+  }
 }
 
 void next_tet() {
-    //printf("Current Piece: %d\n", queue[0]);
-    cur_piece = queue[0];
-    cur_piece.x = 5;
-    cur_piece.y = 0;
-    for (int i = 0; i < 4; i++) {
-        queue[i] = queue[i + 1];
-    }
-    queue[4].type = tets_queue[cur_block_num++];
-    printf("current num: %d\n", cur_block_num);
-    if (cur_block_num >= 7)
-        fill_queue();
-    if (!is_tet_legal(cur_piece))
-        // End Game
-        printf("GG\n");
+  //printf("Current Piece: %d\n", queue[0]);
+  cur_piece = queue[0];
+  cur_piece.x = 5;
+  cur_piece.y = 0;
+  for (int i = 0; i < 4; i++) {
+    queue[i] = queue[i + 1];
+  }
+  queue[4].type = tets_queue[cur_block_num++];
+  //printf("current num: %d\n", cur_block_num);
+  if (cur_block_num >= 7)
+    fill_queue();
+  if (!is_tet_legal(cur_piece))
+    // End Game
+    printf("GG\n");
 }
 
 void fill_queue() {
-    ran_gen_blocks();
-    cur_piece.type = tets_queue[cur_block_num++];
-    printf("TYPE: %d", cur_piece.type);
-    cur_piece.rotation = 0;
-    cur_piece.x = 5;
-    cur_piece.y = 0;
-    for (int i = 0; i < 5; i++) {   
-        queue[i].type = tets_queue[cur_block_num++];
-        queue[i].rotation = 0;
-    }
+  ran_gen_blocks();
+  cur_piece.type = tets_queue[cur_block_num++];
+  //printf("TYPE: %d", cur_piece.type);
+  cur_piece.rotation = 0;
+  cur_piece.x = 5;
+  cur_piece.y = 0;
+  for (int i = 0; i < 5; i++) {   
+    queue[i].type = tets_queue[cur_block_num++];
+    queue[i].rotation = 0;
+  }
 }
 
 void ran_gen_blocks() { // Generates the random blocks
-    unsigned int tet_types[7] = {0, 1, 2, 3, 4, 5, 6};
-    for (int i = 0; i < 7; i++) {
-        int j = rand() % (7 - i);
-        printf("J: %d", j);
-        printf("Tet: %x\n", tet_types[j]);
-        tets_queue[i] = tet_types[j];
-        for (; j < 6; j++) {
-            tet_types[j] = tet_types[j + 1];
-        }
+  unsigned int tet_types[7] = {0, 1, 2, 3, 4, 5, 6};
+  for (int i = 0; i < 7; i++) {
+    int j = rand() % (7 - i);
+    //printf("J: %d", j);
+    //printf("Tet: %x\n", tet_types[j]);
+    tets_queue[i] = tet_types[j];
+    for (; j < 6; j++) {
+      tet_types[j] = tet_types[j + 1];
     }
-    cur_block_num = 0;
+  }
+  cur_block_num = 0;
 }
 
 void move_tet(int move_type) {
-    struct tet_block tet = cur_piece;
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-                map.tile[cur_piece.y + j][cur_piece.x + i] = 0;//cur_piece.type + 1;
-            }
-        }
+  struct tet_block tet = cur_piece;
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	map.tile[cur_piece.y + j][cur_piece.x + i] = 0;//cur_piece.type + 1;
+      }
     }
-    if (move_type == 0) { // Left
-        tet.x--;
-    } else if (move_type == 1) { // Right
-        tet.x++;
-    } else if (move_type == 2) { // Down
-        if (check_place(tet)) {
-            spawn();
-        } else {
-            tet.y++;
-        }
+  }
+  if (move_type == 0) { // Left
+    tet.x--;
+  } else if (move_type == 1) { // Right
+    tet.x++;
+  } else if (move_type == 2) { // Down
+    if (check_place(tet)) {
+      spawn();
     } else {
-        printf("You messed up. %d is not a valid move type.", move_type);
+      tet.y++;
     }
+  } else {
+    printf("You messed up. %d is not a valid move type.", move_type);
+  }
 
-    if (is_tet_legal(tet)) {
-        cur_piece = tet; // If the move is valid, replace the board block with moved block
+  if (is_tet_legal(tet)) {
+    cur_piece = tet; // If the move is valid, replace the board block with moved block
+  }
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+      }
     }
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-                map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
-            }
-        }
-    }
+  }
 }
 
 void rotate_tet(int rot_type) {
-    struct tet_block tet = cur_piece;
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-                map.tile[cur_piece.y + j][cur_piece.x + i] = 0;//cur_piece.type + 1;
-            }
-        }
+  struct tet_block tet = cur_piece;
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	map.tile[cur_piece.y + j][cur_piece.x + i] = 0;//cur_piece.type + 1;
+      }
     }
-    if (rot_type == 0) {
-        if (tet.rotation == 3)
-            tet.rotation = 0;
-        else
-            tet.rotation++;
-    } else if (rot_type == 1) {
-        if (tet.rotation == 0)
-            tet.rotation = 3;
-        else
-            tet.rotation--;
-    } else {
-        printf("You messed up. %d is not a valid rotation type.", rot_type);
-    }
+  }
+  if (rot_type == 0) {
+    if (tet.rotation == 3)
+      tet.rotation = 0;
+    else
+      tet.rotation++;
+  } else if (rot_type == 1) {
+    if (tet.rotation == 0)
+      tet.rotation = 3;
+    else
+      tet.rotation--;
+  } else {
+    printf("You messed up. %d is not a valid rotation type.", rot_type);
+  }
 
-    if (is_tet_legal(tet) || tet_wall_kick(&tet)) {
-        cur_piece = tet; // If the rotation is valid or a wall kick is available, replace the board block with rotated block.
+  if (is_tet_legal(tet) || tet_wall_kick(&tet)) {
+    cur_piece = tet; // If the rotation is valid or a wall kick is available, replace the board block with rotated block.
+  }
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+      }
     }
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-                map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
-            }
-        }
-    }
+  }
 }
 
 int check_place(struct tet_block tet) {
-    tet.y++;
-    if (is_tet_legal(tet))
-        return 0;
-    else
-        return 1;
+  tet.y++;
+  if (is_tet_legal(tet))
+    return 0;
+  else
+    return 1;
 }
 
 int game_end(){// 1 for end, 0 for still playing
