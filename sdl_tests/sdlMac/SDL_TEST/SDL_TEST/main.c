@@ -14,6 +14,9 @@ SDL_Texture *tetrisBlockTexture = NULL;
 
 SDL_Texture *unfilledBlockTexture = NULL;
 
+SDL_Texture *dogLogo = NULL;
+
+
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 512;
 
@@ -86,7 +89,7 @@ int startMenu(){
     int w = 0;
     int h = 0;
     int x, y;
-    
+   
     TTF_Font *font = TTF_OpenFont("SDL_TEST/fonts/HelveticaNeue Medium.ttf", 36);
     if (font == NULL)
     {
@@ -95,14 +98,14 @@ int startMenu(){
     
     SDL_Color color = {0, 0, 0};
     
-    SDL_Surface *textSurface = TTF_RenderText_Solid(font, "Start", color);
+    SDL_Surface *textSurface = TTF_RenderText_Solid(font, "Press anywhere to start", color);
     
     SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
     
     SDL_QueryTexture(textTexture, NULL, NULL, &w, &h);
     
     
-    SDL_Rect textLocation = {SCREEN_HEIGHT/2 + w/3, SCREEN_WIDTH/2 - 2 * h, w, h};
+    SDL_Rect textLocation = {SCREEN_WIDTH/2 - SCREEN_WIDTH/3.5, SCREEN_HEIGHT/2, w, h};
     
     
     
@@ -117,7 +120,7 @@ int startMenu(){
                 case SDL_MOUSEBUTTONDOWN:
                     x = event.motion.x;
                     y = event.motion.y;
-                    if(x <= SCREEN_WIDTH/2 + w && x >= SCREEN_WIDTH/2 - w && y >= SCREEN_HEIGHT/2 - h && y <= SCREEN_HEIGHT/2 + h){
+                    if(x <= SCREEN_WIDTH && x > 0  && y < SCREEN_HEIGHT && y > 0){
                         SDL_FreeSurface(textSurface);
                         SDL_DestroyTexture(textTexture);
                         return 0;
@@ -128,11 +131,38 @@ int startMenu(){
             }
         }
         SDL_RenderClear(renderer);
-        drawText("TETRIS", 48, SCREEN_WIDTH/2 - w, SCREEN_HEIGHT/2 - 4 * h, 0, 0, 255);
+        drawText("TETRIS", 48, SCREEN_WIDTH/2 - SCREEN_WIDTH/8, SCREEN_HEIGHT/2 - 4 * h, 0, 0, 255);
         SDL_RenderCopy(renderer, textTexture, NULL, &textLocation);
         SDL_RenderPresent(renderer);
         
     }
+
+}
+
+int endScreen(){
+    int x, y;
+    SDL_Event event;
+    while(1){
+        while(SDL_PollEvent(&event)){
+            switch(event.type){
+                case SDL_QUIT:
+                    return 1;
+                case SDL_MOUSEBUTTONDOWN:
+                    x = event.motion.x;
+                    y = event.motion.y;
+                    if(x <= SCREEN_WIDTH && x > 0  && y < SCREEN_HEIGHT && y > 0){
+                        return 1;
+                    }
+                    break;
+                    
+            }
+        }
+        SDL_RenderClear(renderer);
+        drawEndImage(dogLogo, 100, 100);
+        SDL_RenderPresent(renderer);
+        
+    }
+    
 
 }
 
@@ -149,10 +179,11 @@ int loadMedia()
 
   tetrisBlockTexture = loadTexture("SDL_TEST/sprites/tetrisBlock.png");
   unfilledBlockTexture = loadTexture("SDL_TEST/sprites/unfilledBlock.png");
+    dogLogo = loadTexture("SDL_TEST/sprites/end.png");
 
   loadMap("SDL_TEST/sprites/map01.dat");
 
-  if (tetrisBlockTexture == NULL || unfilledBlockTexture == NULL)
+  if (tetrisBlockTexture == NULL || unfilledBlockTexture == NULL || dogLogo == NULL)
   {
     printf("Failed to load texture images\n");
     success = 0;
@@ -201,6 +232,9 @@ void closeProgram()
 
   SDL_DestroyTexture(unfilledBlockTexture);
   unfilledBlockTexture = NULL;
+    
+    SDL_DestroyTexture(dogLogo);
+    dogLogo = NULL;
 
   //Destroy window
   SDL_DestroyRenderer(renderer);
@@ -278,7 +312,7 @@ void eventHandler()
       //User requests quit
       if (event.type == SDL_QUIT)
       {
-        quit = 1;
+          quit = 1;
       }
 
       else if (event.type == SDL_KEYDOWN)
@@ -346,8 +380,11 @@ void eventHandler()
 
     drawText("Time:", FONTSIZE, SCREEN_WIDTH / 2 + SCREEN_WIDTH / 10, SCREEN_HEIGHT / 2 - SCREEN_WIDTH / 4, 0, 0, 0);
     drawText(timeText, FONTSIZE, SCREEN_WIDTH / 2 + SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2 - SCREEN_WIDTH / 4, 0, 0, 0);
-    drawText("Score:", FONTSIZE, SCREEN_WIDTH / 2 + SCREEN_WIDTH / 10, SCREEN_HEIGHT / 2, 0, 0, 0);
-    drawText(scoreText, FONTSIZE, SCREEN_WIDTH / 2 + SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2, 0, 0, 0);
+    drawText("Score:", FONTSIZE, SCREEN_WIDTH / 2 + SCREEN_WIDTH / 10, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 6, 0, 0, 0);
+    drawText(scoreText, FONTSIZE, SCREEN_WIDTH / 2 + SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 6, 0, 0, 0);
+      drawText("Keys:", FONTSIZE, SCREEN_WIDTH / 2 + SCREEN_WIDTH / 10, SCREEN_HEIGHT/2, 0, 0, 0);
+      drawText("Arrow Keys...To move", 18, SCREEN_WIDTH / 2 + SCREEN_WIDTH/10, SCREEN_HEIGHT/2  + SCREEN_HEIGHT/10, 0, 0, 0);
+      drawText("J/K...To Rotate", 18, SCREEN_WIDTH / 2 + SCREEN_WIDTH / 10, SCREEN_HEIGHT/2 + SCREEN_HEIGHT/7, 0, 0, 0);
 
     SDL_RenderPresent(renderer);
 
@@ -377,6 +414,7 @@ int main(int argc, char *args[])
     else
     {
       eventHandler();
+      endScreen();
     }
   }
 

@@ -50,6 +50,21 @@ void delay(unsigned int frameLimit){
     }
 }
 
+void drawEndImage(SDL_Texture* image, int x, int y){
+    SDL_Rect dest;
+    int w,h;
+    
+    SDL_QueryTexture(image, NULL, NULL, &w, &h);
+    
+    dest.x = x;
+    dest.y = y;
+    dest.w = w; //(1/8 = TILE_SIZE / SIZE OF IMAGE)
+    dest.h = h; //(1/8 = TILE_SIZE / SIZE OF IMAGE)
+    
+    SDL_RenderCopy(renderer, image, NULL, &dest);
+    
+}
+
 
 void drawImage(SDL_Texture* image, int x, int y){
     SDL_Rect dest;

@@ -19,6 +19,7 @@
 SDL_Texture* loadTexture(char * str);
 
 void drawImage(SDL_Texture *image, int x, int y);
+void drawEndImage(SDL_Texture *image, int x, int y);
 void delay();
 
 extern SDL_Renderer* renderer;

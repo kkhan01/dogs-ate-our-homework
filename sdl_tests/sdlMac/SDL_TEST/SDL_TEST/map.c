@@ -148,7 +148,7 @@ void spawn() {
 }
 
 void next_tet() {
-    printf("Current Piece: %d\n", queue[0]);
+    //printf("Current Piece: %d\n", queue[0]);
     cur_piece = queue[0];
     cur_piece.x = 5;
     cur_piece.y = 0;
