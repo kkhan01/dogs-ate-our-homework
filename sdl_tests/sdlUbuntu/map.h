@@ -40,6 +40,6 @@ extern SDL_Texture* tetrisBlockTexture;
 extern SDL_Texture* unfilledBlockTexture;
 
 
-void clear_row();
+int clear_row();
 void gravity();
 #endif /* map_h */

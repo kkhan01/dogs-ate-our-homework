@@ -51,7 +51,7 @@ void drawMap(){
     
 }
 
-void clear_row(){
+int clear_row(){
   int filled = 0;//will be used to make sure last row was filled
   int counter = 0;//counter to iterate with in loops over board
   while(counter < 10 && map.tile[15][counter] == 2){//checks to see if last row filed
@@ -69,7 +69,9 @@ void clear_row(){
   else{//it wasnt filled, gotta restart function
     filled = 0;
     counter = 0;
+    return 0;
   }
+  return 100;
   //function ends
 }
 

@@ -176,7 +176,7 @@ void eventHandler(){
     while(!quit){
       //game logic first
       gravity();
-      //clear_row();
+      score += clear_row();
         //Handle Events
         while(SDL_PollEvent(&event) != 0){
             
