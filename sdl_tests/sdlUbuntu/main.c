@@ -176,12 +176,15 @@ void eventHandler(){
     while(!quit){
       //game logic first
       gravity();
+      //clears the rows
       int i;
       int donezo = 0;
-      for(i=0; i < 16; i++){
+      for(i = 15; i >= 0; i--){
 	donezo += check_row(i);
+	printf("d: %d i:%d\n", donezo, i);
       }
       if(donezo != 0){
+	printf("DONEZO: %d\n", donezo);
 	score += (40 * (donezo + 1));
       }
         //Handle Events
