@@ -13,6 +13,7 @@
 		0D1AA753201838F50032895F /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D0D61EA2016E17F00E26765 /* SDL2_image.framework */; };
 		0D1AA756201A4D020032895F /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1AA755201A4D020032895F /* SDL2_ttf.framework */; };
 		0D562D51200945BD0009DD4D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D562D50200945BD0009DD4D /* main.c */; };
+		0D73EE0E201AA7EC005BA9E6 /* tetris.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D73EE0D201AA7EC005BA9E6 /* tetris.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,9 @@
 		0D562D4D200945BD0009DD4D /* SDL_TEST */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_TEST; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D562D50200945BD0009DD4D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		0D562D582009465D0009DD4D /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		0D73EE0C201AA7EC005BA9E6 /* tetris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tetris.h; sourceTree = "<group>"; };
+		0D73EE0D201AA7EC005BA9E6 /* tetris.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tetris.c; sourceTree = "<group>"; };
+		0D73EE0F201AA883005BA9E6 /* HelveticaNeue Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HelveticaNeue Medium.ttf"; path = "fonts/HelveticaNeue Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 		0D1AA75B201A5DB90032895F /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				0D73EE0F201AA883005BA9E6 /* HelveticaNeue Medium.ttf */,
 				0D1AA75C201A5DEB0032895F /* arial.ttf */,
 			);
 			name = fonts;
@@ -95,6 +100,8 @@
 		0D562D4F200945BD0009DD4D /* SDL_TEST */ = {
 			isa = PBXGroup;
 			children = (
+				0D73EE0C201AA7EC005BA9E6 /* tetris.h */,
+				0D73EE0D201AA7EC005BA9E6 /* tetris.c */,
 				0D1AA75B201A5DB90032895F /* fonts */,
 				0D0D61EC2016E9EA00E26765 /* sprites */,
 				0D562D50200945BD0009DD4D /* main.c */,
@@ -173,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D73EE0E201AA7EC005BA9E6 /* tetris.c in Sources */,
 				0D0D61E82016DE8100E26765 /* map.c in Sources */,
 				0D562D51200945BD0009DD4D /* main.c in Sources */,
 				0D1AA74E201828A80032895F /* textureManager.c in Sources */,
