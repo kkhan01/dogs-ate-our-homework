@@ -74,15 +74,25 @@ int check_row(int i){
 }
 
 void clear_row(int i){
+  /*
   int counter = 0;//counter to iterate with in loops over board
   while(counter < 10){
     map.tile[i][counter] = 0;
     counter++;
     //printf("counter: %d\n", counter);
+  }*/
+  for (int j = 0; j < 10; j++)
+    map.tile[15][j] = 0;
+  for (i; i > 0; i--) {
+    for (int j = 0; j < 10; j++) {
+      map.tile[i][j] = map.tile[i - 1][j];
+    }
   }
+  cur_piece.y++;
 }
 
 void gravity() {
+  /*
   int xcounter = 0; //counter to iterate with in loops over board
   int ycounter = 0; //counter to iterate with in loops over board
   for (ycounter = 14; ycounter >= 0; ycounter--) {
@@ -97,6 +107,8 @@ void gravity() {
       //im thinking we have another method handle tetrimo movements
     }
   }
+  */
+  move_tet(2);
 }
 
 
@@ -131,17 +143,8 @@ int controlledGravity() {
 
 
 void spawn() {
-    /*
-  for (int i = 0; i < 4; i++) {
-    for (int j = 0; j < 4; j++) {
-      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-	    //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-	      map.tile[cur_piece.y + j][cur_piece.x + i] = 2;
-      }
-    }
-  }*/
   next_tet();
-  //printf("Current type: %d\n", cur_piece.type);
+  printf("Current type: %d\n", cur_piece.type);
   cur_piece.type = tets_queue[cur_block_num++];
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
@@ -213,6 +216,16 @@ void move_tet(int move_type) {
     tet.x++;
   } else if (move_type == 2) { // Down
     if (check_place(tet)) { // if it can't move
+    printf("can't move!\n");
+    for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+	    //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	      map.tile[cur_piece.y + j][cur_piece.x + i] = 2;
+      }
+    }
+    }
+      sleep(1);
       spawn();
     } else { // otherwise move down
       tet.y++;
@@ -248,8 +261,8 @@ void rotate_tet(int rot_type) {
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
       if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-	map.tile[cur_piece.y + j][cur_piece.x + i] = 0;//cur_piece.type + 1;
+	    //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	    map.tile[cur_piece.y + j][cur_piece.x + i] = 0;
       }
     }
   }
@@ -274,7 +287,7 @@ void rotate_tet(int rot_type) {
     for (int j = 0; j < 4; j++) {
       if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
 	    //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-	    map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+	    map.tile[cur_piece.y + j][cur_piece.x + i] = 1;
       }
     }
   }
