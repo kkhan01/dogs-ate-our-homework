@@ -15,15 +15,6 @@ unsigned int tet_location(int x, int y) {
     return 0b1000000000000000 >> (x + y * 4);
 }
 
-// Moves left if possible
-void move_tet_left() {
-    struct tet_block tet = cur_piece;
-    tet.x--;
-    if (is_tet_legal(tet)) {
-        cur_piece = tet; // If the move is valid, replace the board block with moved block
-    }
-}
-
 void move_tet(int move_type) {
     struct tet_block tet = cur_piece;
     if (move_type == 0) { // Left
@@ -31,7 +22,7 @@ void move_tet(int move_type) {
     } else if (move_type == 1) { // Right
         tet.x++;
     } else if (move_type == 2) { // Down
-        tet.y--;
+        tet.y++;
     } else {
         printf("You messed up. %d is not a valid move type.", move_type);
     }

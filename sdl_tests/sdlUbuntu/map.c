@@ -124,19 +124,27 @@ int controlledGravity(){
   return returntype;
 }
 
+int move_left() {
+
+}
+
 
 void spawn() {
     next_tet();
+    printf("Current type: %d\n", cur_piece.type);
+    cur_piece.type = tets_queue[cur_block_num++];
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-                map.tile[cur_piece.x + i][cur_piece.y + j] = cur_piece.type + 1;
+                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+                map.tile[cur_piece.y + j][cur_piece.x + i] = cur_piece.type + 1;
             }
         }
     }
 }
 
 void next_tet() {
+    printf("Current Piece: %d\n", queue[0]);
     cur_piece = queue[0];
     cur_piece.x = 5;
     cur_piece.y = 0;
@@ -144,8 +152,9 @@ void next_tet() {
         queue[i] = queue[i + 1];
     }
     queue[4].type = tets_queue[cur_block_num++];
+    printf("current num: %d\n", cur_block_num);
     if (cur_block_num == 7)
-        ran_gen_blocks();
+        fill_queue();
     if (!is_tet_legal(cur_piece))
         // End Game
         printf("Game over.\n");
@@ -157,7 +166,7 @@ void fill_queue() {
     cur_piece.rotation = 0;
     cur_piece.x = 5;
     cur_piece.y = 0;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {   
         queue[i].type = tets_queue[cur_block_num++];
         queue[i].rotation = 0;
     }
@@ -167,6 +176,7 @@ void ran_gen_blocks() { // Generates the random blocks
     unsigned int tet_types[7] = {0, 1, 2, 3, 4, 5, 6};
     for (int i = 0; i < 7; i++) {
         int j = rand() % (7 - i);
+        printf("Tet: %x\n", tet_types[j]);
         tets_queue[i] = tet_types[j];
         for (; j < 6; j++) {
             tet_types[j] = tet_types[j + 1];

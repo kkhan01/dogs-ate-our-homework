@@ -212,24 +212,29 @@ void eventHandler(){
                     case SDLK_DOWN:
                         printf("Pressed Down\n");
                         if(controlledGravity() == -1){
-			  printf("done\n");
-			  spawn();
-			}
+                            spawn();
+                        }
                         break;
                         
                     case SDLK_LEFT:
                         printf("Pressed Left\n");
+                        move_tet(0);
                         break;
                         
                     case SDLK_RIGHT:
                         printf("Pressed Right\n");
+                        move_tet(1);
                         break;
                         
                     case SDLK_j:
                         printf("Pressed J (Left rotate)");
+                        rotate_tet(0);
+                        break;
 
                     case SDLK_k:
                         printf("Pressed k (Right rotate)");
+                        rotate_tet(1);
+                        break;
                     
                     default:
                         printf("Unknown Key Touch\n");
