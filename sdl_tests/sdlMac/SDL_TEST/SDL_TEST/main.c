@@ -160,8 +160,7 @@ void eventHandler(){
     int countdown = 1000000;
     int countdown_seconds = 180;
     
-    //Score
-    
+    //Score    
     char * scoreText;
     char * numstrScore[21];
     int score = 0;
@@ -170,8 +169,6 @@ void eventHandler(){
     SDL_Event event;
     //While application is running
     while(!quit){
-        
-        gravity();
         //Handle Events
         while(SDL_PollEvent(&event) != 0){
             
@@ -191,7 +188,7 @@ void eventHandler(){
                         
                     case SDLK_DOWN:
                         printf("Pressed Down\n");
-                        
+                        controlledGravity();
                         break;
                         
                     case SDLK_LEFT:
@@ -211,15 +208,18 @@ void eventHandler(){
                     default:
                         break;
                 }
+                
+ 
             }
             
         }
         
         //Updating the surface
         
+        gravity();
+        
         //DRAWING TILE MAP
         SDL_RenderClear(renderer);
-        
         
         
         drawMap();
@@ -251,6 +251,7 @@ void eventHandler(){
         
         frameLimit = SDL_GetTicks() + 16;
         
+        clear_row();
         
         
         

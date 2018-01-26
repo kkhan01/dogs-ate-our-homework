@@ -196,6 +196,7 @@ void eventHandler(){
                         
                     case SDLK_DOWN:
                         printf("Pressed Down\n");
+                        controlledGravity();
                         break;
                         
                     case SDLK_LEFT:
