@@ -74,8 +74,8 @@ void clear_row(){
 void gravity(){
   int xcounter = 0;//counter to iterate with in loops over board
   int ycounter = 0;//counter to iterate with in loops over board
-  for(ycounter = 14; ycounter > 0; ycounter--){
-    for(xcounter = 9; xcounter > 0; xcounter--){
+  for(ycounter = 14; ycounter >= 0; ycounter--){
+    for(xcounter = 9; xcounter >= 0; xcounter--){
       if(map.tile[ycounter][xcounter] == 2){//block that is the bottom or has touched another block touching the bottom
 	if(map.tile[ycounter+1][xcounter] == 0){
 	  map.tile[ycounter+1][xcounter] = 2;

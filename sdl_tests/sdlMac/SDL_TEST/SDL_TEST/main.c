@@ -171,6 +171,7 @@ void eventHandler(){
     //While application is running
     while(!quit){
         
+        gravity();
         //Handle Events
         while(SDL_PollEvent(&event) != 0){
             

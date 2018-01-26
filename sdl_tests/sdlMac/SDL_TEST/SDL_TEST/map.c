@@ -52,17 +52,15 @@ void drawMap(){
 }
 
 //KK CODE------------------------------------------------------------------------------------------
-
 void clear_row(){
     int filled = 0;//will be used to make sure last row was filled
     int counter = 0;//counter to iterate with in loops over board
-    while(counter < 10 && map.tile[15][counter] != 0){//checks to see if last row filed
+    while(counter < 10 && map.tile[15][counter] == 1){//checks to see if last row filed
         filled++;
     }
     if(filled == 10){//it was filled, gotta clear it up
         while(counter < 10){
             map.tile[15][counter] = 0;
-            filled++;
         }
     }
     else{//it wasnt filled, gotta restart function
@@ -75,11 +73,11 @@ void clear_row(){
 void gravity(){
     int xcounter = 0;//counter to iterate with in loops over board
     int ycounter = 0;//counter to iterate with in loops over board
-    for(ycounter = 14; ycounter > 0; ycounter--){
-        for(xcounter = 9; xcounter > 0; xcounter--){
-            if(map.tile[ycounter][xcounter] == -1){//block that is the bottom or has touched another block touching the bottom
+    for(ycounter = 14; ycounter >= 0; ycounter--){
+        for(xcounter = 9; xcounter >= 0; xcounter--){
+            if(map.tile[ycounter][xcounter] == 2){//block that is the bottom or has touched another block touching the bottom
                 if(map.tile[ycounter+1][xcounter] == 0){
-                    map.tile[ycounter+1][xcounter] = -1;
+                    map.tile[ycounter+1][xcounter] = 2;
                     map.tile[ycounter][xcounter] = 0;
                 }
                 //else stays in place i guess
@@ -89,6 +87,7 @@ void gravity(){
         }
     }
 }
+
 
 
 
