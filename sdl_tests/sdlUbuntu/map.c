@@ -66,13 +66,30 @@ int check_row(int i){
   }
   if(filled == 10){//it was filled, clear and return true
     clear_row(i);
+    print_board();
+    normalGravity();
     return 1;
   }
   else{
     return 0;
   }
 }
-
+void normalGravity(){
+  int xcounter = 0; //counter to iterate with in loops over board
+  int ycounter = 0; //counter to iterate with in loops over board
+  for (ycounter = 14; ycounter >= 0; ycounter--) {
+    for (xcounter = 9; xcounter >= 0; xcounter--) {
+      if (map.tile[ycounter][xcounter] == 2) {
+        //block that is the bottom or has touched another block touching the bottom
+        if (map.tile[ycounter + 1][xcounter] == 0) {
+          map.tile[ycounter + 1][xcounter] = 2;
+          map.tile[ycounter][xcounter] = 0;
+        } //else stays in place i guess
+      } //else it was empty space or a moving tetrimo
+      //im thinking we have another method handle tetrimo movements
+    }
+  }
+}
 void clear_row(int i){
   /*
   int counter = 0;//counter to iterate with in loops over board
