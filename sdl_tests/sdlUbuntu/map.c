@@ -184,6 +184,76 @@ void ran_gen_blocks() { // Generates the random blocks
     cur_block_num = 0;
 }
 
+void move_tet(int move_type) {
+    struct tet_block tet = cur_piece;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+                map.tile[cur_piece.y + j][cur_piece.x + i] = 0;//cur_piece.type + 1;
+            }
+        }
+    }
+    if (move_type == 0) { // Left
+        tet.x--;
+    } else if (move_type == 1) { // Right
+        tet.x++;
+    } else if (move_type == 2) { // Down
+        tet.y++;
+    } else {
+        printf("You messed up. %d is not a valid move type.", move_type);
+    }
+
+    if (is_tet_legal(tet)) {
+        cur_piece = tet; // If the move is valid, replace the board block with moved block
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+                map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+            }
+        }
+    }
+}
+
+void rotate_tet(int rot_type) {
+    struct tet_block tet = cur_piece;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+                map.tile[cur_piece.y + j][cur_piece.x + i] = 0;//cur_piece.type + 1;
+            }
+        }
+    }
+    if (rot_type == 0) {
+        if (tet.rotation == 3)
+            tet.rotation = 0;
+        else
+            tet.rotation++;
+    } else if (rot_type == 1) {
+        if (tet.rotation == 0)
+            tet.rotation = 3;
+        else
+            tet.rotation--;
+    } else {
+        printf("You messed up. %d is not a valid rotation type.", rot_type);
+    }
+
+    if (is_tet_legal(tet) || tet_wall_kick(&tet)) {
+        cur_piece = tet; // If the rotation is valid or a wall kick is available, replace the board block with rotated block.
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+                printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+                map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+            }
+        }
+    }
+}
+
 //TEST METHOD, COMMENT OUT USES AT THE END
 void print_board(){
   int i, j;
