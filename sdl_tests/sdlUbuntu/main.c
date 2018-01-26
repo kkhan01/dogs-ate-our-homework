@@ -174,24 +174,29 @@ void eventHandler(){
     SDL_Event event;
     //While application is running
     while(!quit){
-      //game logic first
-      gravity();
-      //clears the rows
-      int i;
-      int donezo = 0;
-      for(i = 15; i >= 0; i--){
-	donezo += check_row(i);
-	//printf("d: %d i:%d\n", donezo, i);
-      }
-      if(donezo != 0){
-	//printf("DONEZO: %d\n", donezo);
-	score += (40 * (donezo + 1));
-      }
+
+        if(countdown_seconds <= 0){
+            quit = 1;
+        }
+
+        //game logic first
+        gravity();
+        //clears the rows
+        int i;
+        int donezo = 0;
+        for(i = 15; i >= 0; i--){
+	        donezo += check_row(i);
+	        //printf("d: %d i:%d\n", donezo, i);
+        } 
+        if(donezo != 0){
+	        //printf("DONEZO: %d\n", donezo);
+	        score += (40 * (donezo + 1));
+        }
         //Handle Events
         while(SDL_PollEvent(&event) != 0){
             
             //User requests quit
-            if(event.type == SDL_QUIT || countdown_seconds <= 0){
+            if(event.type == SDL_QUIT){
                 quit = 1;
             }
             
