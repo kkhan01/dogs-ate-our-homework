@@ -15,53 +15,6 @@ unsigned int tet_location(int x, int y) {
     return 0b1000000000000000 >> (x + y * 4);
 }
 
-// Moves left if possible
-void move_tet_left() {
-    struct tet_block tet = cur_piece;
-    tet.x--;
-    if (is_tet_legal(tet)) {
-        cur_piece = tet; // If the move is valid, replace the board block with moved block
-    }
-}
-
-void move_tet(int move_type) {
-    struct tet_block tet = cur_piece;
-    if (move_type == 0) { // Left
-        tet.x--;
-    } else if (move_type == 1) { // Right
-        tet.x++;
-    } else if (move_type == 2) { // Down
-        tet.y--;
-    } else {
-        printf("You messed up. %d is not a valid move type.", move_type);
-    }
-
-    if (is_tet_legal(tet)) {
-        cur_piece = tet; // If the move is valid, replace the board block with moved block
-    }
-}
-
-void rotate_tet(int rot_type) {
-    struct tet_block tet = cur_piece;
-    if (rot_type == 0) {
-        if (tet.rotation == 3)
-            tet.rotation = 0;
-        else
-            tet.rotation++;
-    } else if (rot_type == 1) {
-        if (tet.rotation == 0)
-            tet.rotation = 3;
-        else
-            tet.rotation--;
-    } else {
-        printf("You messed up. %d is not a valid rotation type.", rot_type);
-    }
-
-    if (is_tet_legal(tet) || tet_wall_kick(&tet)) {
-        cur_piece = tet; // If the rotation is valid or a wall kick is available, replace the board block with rotated block.
-    }
-}
-
 // Checks if the block is overlapping anything. True if not overlapping.
 boolean is_tet_legal(struct tet_block tet) {
     for (int i = 0; i < 4; i++) {

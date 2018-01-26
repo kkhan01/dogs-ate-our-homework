@@ -9,6 +9,11 @@
 #include "map.h"
 
 Map map;
+int cur_block_num; // Current block in randomly generated block array
+int tets_queue[7];
+
+struct tet_block cur_piece;
+struct tet_block queue[5];
 
 void loadMap(char *filename){
   int y_coord, x_coord;

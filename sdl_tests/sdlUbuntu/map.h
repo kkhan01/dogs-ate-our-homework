@@ -41,9 +41,7 @@ extern SDL_Texture* tetrisBlockTexture;
 
 extern SDL_Texture* unfilledBlockTexture;
 
-int cur_block_num; // Current block in randomly generated block array
-int tets_queue[7];
-struct tet_block queue[5];
+
 
 int check_row(int i);
 void clear_row(int i);

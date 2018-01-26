@@ -6,7 +6,7 @@
 
 typedef unsigned char boolean; // Boolean
 
-unsigned int tetronimos[7][4];
+extern unsigned int tetronimos[7][4];
 
 struct tet_block {
     int x; // x-coordinate
@@ -15,7 +15,7 @@ struct tet_block {
     int rotation; // Rotation state
 };
 
-struct tet_block cur_piece;
+
 
 unsigned int tet_location(int, int);
 
