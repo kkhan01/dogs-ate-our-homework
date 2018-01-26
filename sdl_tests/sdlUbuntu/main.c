@@ -181,10 +181,10 @@ void eventHandler(){
       int donezo = 0;
       for(i = 15; i >= 0; i--){
 	donezo += check_row(i);
-	printf("d: %d i:%d\n", donezo, i);
+	//printf("d: %d i:%d\n", donezo, i);
       }
       if(donezo != 0){
-	printf("DONEZO: %d\n", donezo);
+	//printf("DONEZO: %d\n", donezo);
 	score += (40 * (donezo + 1));
       }
         //Handle Events
@@ -206,7 +206,10 @@ void eventHandler(){
                         
                     case SDLK_DOWN:
                         printf("Pressed Down\n");
-                        controlledGravity();
+                        if(controlledGravity() == -1){
+			  printf("done\n");
+			  //spawn();
+			}
                         break;
                         
                     case SDLK_LEFT:

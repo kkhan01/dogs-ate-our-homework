@@ -43,4 +43,5 @@ extern SDL_Texture* unfilledBlockTexture;
 int check_row(int i);
 void clear_row(int i);
 void gravity();
+int controlledGravity();
 #endif /* map_h */

@@ -11,42 +11,42 @@
 Map map;
 
 void loadMap(char *filename){
-    int y_coord, x_coord;
-    FILE *file;
+  int y_coord, x_coord;
+  FILE *file;
     
-    file = fopen(filename, "rb");
+  file = fopen(filename, "rb");
     
-    if (file == NULL){
-        printf("Failed to open map %s\n", filename);
-        exit(1);
+  if (file == NULL){
+    printf("Failed to open map %s\n", filename);
+    exit(1);
+  }
+    
+    
+  for(y_coord = 0; y_coord < TILE_MAX_Y; y_coord++){
+    for(x_coord = 0; x_coord < TILE_MAX_X; x_coord++){
+      //printf("%d", map.tile[y_coord][x_coord]);
+      fscanf(file, "%d", &map.tile[y_coord][x_coord]);
     }
+  }
     
-    
-    for(y_coord = 0; y_coord < TILE_MAX_Y; y_coord++){
-        for(x_coord = 0; x_coord < TILE_MAX_X; x_coord++){
-            //printf("%d", map.tile[y_coord][x_coord]);
-            fscanf(file, "%d", &map.tile[y_coord][x_coord]);
-        }
-    }
-    
-    fclose(file);
+  fclose(file);
     
     
 }
 
 void drawMap(){
-    int y_coord, x_coord;
+  int y_coord, x_coord;
     
-    for(y_coord = 0; y_coord < TILE_MAX_Y; y_coord++){
-        for(x_coord = 0; x_coord < TILE_MAX_X; x_coord++){
-            if(map.tile[y_coord][x_coord] == 0){
-                drawImage(unfilledBlockTexture, x_coord * TILE_SIZE, y_coord * TILE_SIZE);
-            }
-            else if(map.tile[y_coord][x_coord] != 0){
-                drawImage(tetrisBlockTexture, x_coord * TILE_SIZE, y_coord * TILE_SIZE);
-            }
-        }
+  for(y_coord = 0; y_coord < TILE_MAX_Y; y_coord++){
+    for(x_coord = 0; x_coord < TILE_MAX_X; x_coord++){
+      if(map.tile[y_coord][x_coord] == 0){
+	drawImage(unfilledBlockTexture, x_coord * TILE_SIZE, y_coord * TILE_SIZE);
+      }
+      else if(map.tile[y_coord][x_coord] != 0){
+	drawImage(tetrisBlockTexture, x_coord * TILE_SIZE, y_coord * TILE_SIZE);
+      }
     }
+  }
     
     
 }
@@ -94,23 +94,34 @@ void gravity(){
   }
 }
 
-void controlledGravity(){
-    int xcounter = 0;
-    int ycounter = 0;
-    for(ycounter = 14; ycounter >= 0; ycounter--){
-        for(xcounter = 9; xcounter >= 0; xcounter--){
-            if(map.tile[ycounter][xcounter] == 1){//block that is the bottom or has touched another block touching the bottom
-                if(map.tile[ycounter+1][xcounter] == 0){
-                    map.tile[ycounter+1][xcounter] = 1;
-                    map.tile[ycounter][xcounter] = 0;
-                    
-                }
-                //else stays in place i guess
-            }
-            //else it was empty space or a moving tetrimo
-            //im thinking we have another method handle tetrimo movements
-        }
+int controlledGravity(){
+  int xcounter = 0;
+  int ycounter = 0;
+  int returntype = 0;
+  for(ycounter = 14; ycounter >= 0; ycounter--){
+    for(xcounter = 9; xcounter >= 0; xcounter--){
+      if(map.tile[ycounter][xcounter] == 1){//block that is the bottom or has touched another block touching the bottom
+	if(ycounter+1 == 15 && map.tile[ycounter+1][xcounter] != 2){
+	  map.tile[ycounter][xcounter] = 0;
+	  map.tile[15][xcounter] = 2;
+	  returntype = -1;
+	}
+	else if(map.tile[ycounter+1][xcounter] == 0){//move down
+	  map.tile[ycounter+1][xcounter] = 1;
+	  map.tile[ycounter][xcounter] = 0;
+	  returntype = 1;
+	}
+	else if(map.tile[ycounter+1][xcounter] == 2){//convert into 2
+	  map.tile[ycounter][xcounter] = 2;
+	  returntype = -1;
+	}
+	else{
+	  returntype = 0;//idk what to do really
+	}
+      }
     }
+  }
+  return returntype;
 }
 
 
