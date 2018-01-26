@@ -290,14 +290,9 @@ void eventHandler()
     //
     if (countdown % 75 == 0)
     {
-      if (controlledGravity() == -1)
-      {
-        spawn();
-      }
+      //game logic first
+      gravity();
     }
-
-    //game logic first
-    gravity();
     //clears the rows
     int i;
     int donezo = 0;
@@ -333,10 +328,7 @@ void eventHandler()
 
         case SDLK_DOWN:
           printf("Pressed Down\n");
-          if (controlledGravity() == -1)
-          {
-            spawn();
-          }
+          move_tet(2);
           break;
 
         case SDLK_LEFT:
