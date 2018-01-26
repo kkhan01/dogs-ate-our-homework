@@ -131,6 +131,7 @@ int controlledGravity() {
 
 
 void spawn() {
+  /*
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
       if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
@@ -138,7 +139,7 @@ void spawn() {
 	      map.tile[cur_piece.y + j][cur_piece.x + i] = 2;
       }
     }
-  }
+  }*/
   next_tet();
   //printf("Current type: %d\n", cur_piece.type);
   cur_piece.type = tets_queue[cur_block_num++];
