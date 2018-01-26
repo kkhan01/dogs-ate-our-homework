@@ -208,7 +208,7 @@ void eventHandler(){
                         printf("Pressed Down\n");
                         if(controlledGravity() == -1){
 			  printf("done\n");
-			  //spawn();
+			  spawn();
 			}
                         break;
                         

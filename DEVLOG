@@ -62,3 +62,6 @@ Added j/k as keys for rotation
 -e wengJ -- 2018-01-25 20:20:28
 fixed gravity, clear_row, and added controlled gravity, fixed bugs
 
+linK -- 2018-01-25 22:33:09
+Added Spawn. Currently only spawns Is.
+

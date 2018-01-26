@@ -19,9 +19,11 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <errno.h>
+#include <stdlib.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+#include "tetris.h"
 
 
 void loadMap();
@@ -39,9 +41,16 @@ extern SDL_Texture* tetrisBlockTexture;
 
 extern SDL_Texture* unfilledBlockTexture;
 
+int cur_block_num; // Current block in randomly generated block array
+int tets_queue[7];
+struct tet_block queue[5];
 
 int check_row(int i);
 void clear_row(int i);
 void gravity();
 int controlledGravity();
+void spawn();
+void next_tet();
+void fill_queue();
+void ran_gen_blocks();
 #endif /* map_h */
