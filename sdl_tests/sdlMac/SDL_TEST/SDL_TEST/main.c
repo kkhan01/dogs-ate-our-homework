@@ -103,7 +103,7 @@ void drawText(char* string, int size, int x, int y,
     int w = 0;
     int h = 0;
     
-    TTF_Font* font = TTF_OpenFont("SDL_TEST/fonts/arial.ttf", size);
+    TTF_Font* font = TTF_OpenFont("SDL_TEST/fonts/HelveticaNeue Medium.ttf", size);
     
     SDL_Color color = {c1, c2, c3};
     
@@ -190,6 +190,7 @@ void eventHandler(){
                         
                     case SDLK_DOWN:
                         printf("Pressed Down\n");
+                        
                         break;
                         
                     case SDLK_LEFT:
@@ -200,8 +201,13 @@ void eventHandler(){
                         printf("Pressed Right\n");
                         break;
                         
+                    case SDLK_j:
+                        printf("Pressed J (Left rotate)");
+                        
+                    case SDLK_k:
+                        printf("Pressed k (Right rotate)");
+                        
                     default:
-                        printf("Unknown Key Touch\n");
                         break;
                 }
             }
