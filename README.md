@@ -63,6 +63,15 @@ A tetris game built using C and SDL. The goal is to get the most points you can 
     
 ---
 
+### Bugs
+
+1. Gravity works uniform on all pieces of the tetrimo rather than on the tetrimo
+2. Sometimes the last row clearing gets disabled (re-enabled after clearing more rows)
+3. Blocks can sort of phase throught the bottom if you move them alot on the last row (left and right)
+4. Rotating fast enough might cause temporary suspension (gravity will work as soon as you fail to be at that speed)
+
+---
+
 ### How to use log.sh
 
 1. Open the terminal
