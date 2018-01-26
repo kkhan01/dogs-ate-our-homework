@@ -176,6 +176,9 @@ void eventHandler()
 
   //Event Handler
   SDL_Event event;
+
+  //first spawn
+  spawn();
   //While application is running
   while (!quit)
   {
