@@ -59,3 +59,6 @@ updated README.md: more installation instructions
 linK -- 2018-01-25 18:55:23
 Added j/k as keys for rotation
 
+-e wengJ -- 2018-01-25 20:20:28
+fixed gravity, clear_row, and added controlled gravity, fixed bugs
+
