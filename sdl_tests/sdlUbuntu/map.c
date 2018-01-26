@@ -51,28 +51,29 @@ void drawMap(){
     
 }
 
-int clear_row(){
+int check_row(int i){
   int filled = 0;//will be used to make sure last row was filled
   int counter = 0;//counter to iterate with in loops over board
-  while(counter < 10 && map.tile[15][counter] == 2){//checks to see if last row filed
+  while(counter < 10 && map.tile[i][counter] == 2){//checks to see if last row filed
     filled++;
     counter++;
   }
-  counter = 0;
-  if(filled == 10){//it was filled, gotta clear it up
-    while(counter < 10){
-      map.tile[15][counter] = 0;
-      counter++;
-      //printf("counter: %d\n", counter);
-    }
+  if(filled == 10){//it was filled, clear and return true
+    clear_row(i);
+    return 1;
   }
-  else{//it wasnt filled, gotta restart function
-    filled = 0;
-    counter = 0;
+  else{
     return 0;
   }
-  return 100;
-  //function ends
+}
+
+void clear_row(int i){
+  int counter = 0;//counter to iterate with in loops over board
+  while(counter < 10){
+    map.tile[i][counter] = 0;
+    counter++;
+    //printf("counter: %d\n", counter);
+  }
 }
 
 void gravity(){

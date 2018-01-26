@@ -176,7 +176,14 @@ void eventHandler(){
     while(!quit){
       //game logic first
       gravity();
-      score += clear_row();
+      int i;
+      int donezo = 0;
+      for(i=0; i < 16; i++){
+	donezo += check_row(i);
+      }
+      if(donezo != 0){
+	score += (40 * (donezo + 1));
+      }
         //Handle Events
         while(SDL_PollEvent(&event) != 0){
             
