@@ -95,6 +95,7 @@ void gravity(){
 }
 
 int controlledGravity(){
+  //print_board();
   int xcounter = 0;
   int ycounter = 0;
   int returntype = 0;
@@ -133,7 +134,7 @@ void spawn() {
         for (int j = 0; j < 4; j++) {
             if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
                 printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-                map.tile[cur_piece.y + j][cur_piece.x + i] = cur_piece.type + 1;
+                map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
             }
         }
     }
@@ -183,10 +184,14 @@ void ran_gen_blocks() { // Generates the random blocks
     cur_block_num = 0;
 }
 
-
-
-
-
-
-
-
+//TEST METHOD, COMMENT OUT USES AT THE END
+void print_board(){
+  int i, j;
+  for(i = 0; i < 16; i++){
+    for(j = 0; j < 10; j++){
+      printf("%d", map.tile[i][j]);
+    }
+    printf("\n");
+  }
+  printf("\n");
+}
