@@ -44,7 +44,7 @@ extern SDL_Texture* tetrisBlockTexture;
 
 extern SDL_Texture* unfilledBlockTexture;
 
-
+int endScreen();
 int game_end();
 int startMenu();
 int check_row(int i);

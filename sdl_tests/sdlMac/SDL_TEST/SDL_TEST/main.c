@@ -139,7 +139,7 @@ int startMenu(){
 
 }
 
-int endScreen(){
+int endScreen(char * string){
     int x, y;
     SDL_Event event;
     while(1){
@@ -158,7 +158,9 @@ int endScreen(){
             }
         }
         SDL_RenderClear(renderer);
+        
         drawEndImage(dogLogo, 100, 100);
+        drawText(string, 36, SCREEN_WIDTH/2 - SCREEN_WIDTH/8, SCREEN_HEIGHT/2 + SCREEN_HEIGHT/15, 0, 0, 0);
         SDL_RenderPresent(renderer);
         
     }
@@ -247,7 +249,6 @@ void closeProgram()
   TTF_Quit();
   SDL_Quit();
 }
-
 void eventHandler()
 {
   //loop flag
@@ -262,8 +263,7 @@ void eventHandler()
   int countdown_seconds = 180;
 
   //Score
-
-  char *scoreText;
+  char *scoreText = "";
   char *numstrScore[21];
   int score = 0;
 
@@ -275,14 +275,20 @@ void eventHandler()
   //first spawn
   spawn();
   //While application is running
-  while (!quit && !game_end())
+  while (!quit)
   {
     if (countdown_seconds <= 0)
     {
+        endScreen(scoreText);
       quit = 1;
     }
+      
+      if(game_end() == 1){
+          endScreen(scoreText);
+          quit = 1;
+      }
     //
-    if (countdown % 100 == 0)
+    if (countdown % 75 == 0)
     {
       if (controlledGravity() == -1)
       {
@@ -312,6 +318,7 @@ void eventHandler()
       //User requests quit
       if (event.type == SDL_QUIT)
       {
+          endScreen(scoreText);
           quit = 1;
       }
 
@@ -395,7 +402,10 @@ void eventHandler()
     delay(frameLimit);
 
     frameLimit = SDL_GetTicks() + 16;
+      
   }
+    
+
 }
 
 int main(int argc, char *args[])
@@ -413,8 +423,9 @@ int main(int argc, char *args[])
     }
     else
     {
-      eventHandler();
-      endScreen();
+ 
+        eventHandler();
+
     }
   }
 
