@@ -170,6 +170,8 @@ void eventHandler(){
     char * numstrScore[21];
     int score = 0;
     
+    fill_queue();
+
     //Event Handler
     SDL_Event event;
     //While application is running

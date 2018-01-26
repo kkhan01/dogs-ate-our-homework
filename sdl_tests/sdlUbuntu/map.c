@@ -124,10 +124,6 @@ int controlledGravity(){
   return returntype;
 }
 
-int move_left() {
-
-}
-
 
 void spawn() {
     next_tet();
@@ -163,6 +159,7 @@ void next_tet() {
 void fill_queue() {
     ran_gen_blocks();
     cur_piece.type = tets_queue[cur_block_num++];
+    printf("TYPE: %d", cur_piece.type);
     cur_piece.rotation = 0;
     cur_piece.x = 5;
     cur_piece.y = 0;
