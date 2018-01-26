@@ -309,7 +309,10 @@ void print_board(){
   printf("\n");
 }
 
-// Checks if the block is overlapping anything. True if not overlapping.
+/*======== unsigned is_tet_legal ==========
+Inputs:  struct tet_block tet
+Returns: Checks if the block is overlapping anything. True (1) if not overlapping.
+=======================================*/
 boolean is_tet_legal(struct tet_block tet) {
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
