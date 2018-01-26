@@ -1,14 +1,27 @@
 # dogs-ate-our-homework
 
----
+Jeffrey Weng - Kyle Lin - Khinshan Khan
 
-### How to use log.sh
-
-1. Open the terminal
-2. Navigate to the root folder containing log.sh
-3. Run `./log.sh "<lastF>" "<devmsg>"`
+Period 10
 
 ---
+
+### Description
+
+A tetris game built using C and SDL. The goal is to get the most points you can before time runs out or you reach the top of the map.
+
+---
+
+### How to run
+
+1. Install all libraries
+2. Navigate to `./sdl_tests/sdlUbuntu/`
+3. run `make`
+4. run `./game`
+5. Left/Right arrow key for movement. J/K for rotation.
+
+---
+
 
 ### SDL Installation + Libraries
 
@@ -48,6 +61,14 @@
       - Edit Scheme...
         - Set custom working directory to your current working directory
     
+---
 
+### How to use log.sh
+
+1. Open the terminal
+2. Navigate to the root folder containing log.sh
+3. Run `./log.sh "<lastF>" "<devmsg>"`
+
+---
 
     
