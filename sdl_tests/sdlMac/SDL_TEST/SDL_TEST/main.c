@@ -158,7 +158,7 @@ void eventHandler(){
     char * timeText;
     char * numstr[21];
     int countdown = 1000000;
-    int countdown_seconds = 5;
+    int countdown_seconds = 180;
     
     //Score    
     char * scoreText;
