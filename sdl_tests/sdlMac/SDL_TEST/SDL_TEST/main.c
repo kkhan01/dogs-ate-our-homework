@@ -158,7 +158,7 @@ void eventHandler(){
     char * timeText;
     char * numstr[21];
     int countdown = 1000000;
-    int countdown_seconds = 180;
+    int countdown_seconds = 5;
     
     //Score    
     char * scoreText;
@@ -169,11 +169,16 @@ void eventHandler(){
     SDL_Event event;
     //While application is running
     while(!quit){
+        
+        if (countdown_seconds <= 0){
+            quit = 1;
+        }
+        
         //Handle Events
         while(SDL_PollEvent(&event) != 0){
             
             //User requests quit
-            if(event.type == SDL_QUIT || countdown_seconds <= 0){
+            if(event.type == SDL_QUIT){
                 quit = 1;
             }
             
