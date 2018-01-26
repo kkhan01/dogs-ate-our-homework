@@ -182,7 +182,9 @@ void eventHandler(){
     }
     //
     if(countdown%100 == 0){
-      controlledGravity();
+      if(controlledGravity() == -1){
+	spawn();
+      }
     }
 	
     //game logic first
