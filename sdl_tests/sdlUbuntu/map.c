@@ -107,12 +107,12 @@ int controlledGravity(){
 	  map.tile[ycounter][xcounter] = 0;
 	  map.tile[15][xcounter] = 2;
 	  returntype = -1;
-	}/*
+	}
 	else if(map.tile[ycounter+1][xcounter] == 0){//move down
 	  map.tile[ycounter+1][xcounter] = 1;
 	  map.tile[ycounter][xcounter] = 0;
 	  returntype = 1;
-	}*/
+	}
 	else if(map.tile[ycounter+1][xcounter] == 2){//convert into 2
 	  map.tile[ycounter][xcounter] = 2;
 	  returntype = -1;
