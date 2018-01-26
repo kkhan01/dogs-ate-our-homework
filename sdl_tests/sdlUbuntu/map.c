@@ -273,6 +273,16 @@ int check_place(struct tet_block tet) {
         return 1;
 }
 
+int game_end(){// 1 for end, 0 for still playing
+  int row;
+  int returntype = 0;
+  for(row = 0; row < 6 && map.tile[row][6]!=0; row++){
+    if(row == 5){
+      returntype = 1;
+    }
+  }
+  return returntype;
+}
 //TEST METHOD, COMMENT OUT USES AT THE END
 void print_board(){
   int i, j;

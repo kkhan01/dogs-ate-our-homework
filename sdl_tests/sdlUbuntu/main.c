@@ -180,9 +180,8 @@ void eventHandler()
   //first spawn
   spawn();
   //While application is running
-  while (!quit)
+  while (!quit && !game_end())
   {
-
     if (countdown_seconds <= 0)
     {
       quit = 1;
