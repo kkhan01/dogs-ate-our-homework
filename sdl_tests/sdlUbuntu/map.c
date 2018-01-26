@@ -7,6 +7,7 @@
 //
 
 #include "map.h"
+#include "istetlegal.h"
 
 Map map;
 int cur_block_num; // Current block in randomly generated block array
@@ -81,51 +82,47 @@ void clear_row(int i){
   }
 }
 
-void gravity(){
-  int xcounter = 0;//counter to iterate with in loops over board
-  int ycounter = 0;//counter to iterate with in loops over board
-  for(ycounter = 14; ycounter >= 0; ycounter--){
-    for(xcounter = 9; xcounter >= 0; xcounter--){
-      if(map.tile[ycounter][xcounter] == 2){//block that is the bottom or has touched another block touching the bottom
-	if(map.tile[ycounter+1][xcounter] == 0){
-	  map.tile[ycounter+1][xcounter] = 2;
-	  map.tile[ycounter][xcounter] = 0;
-	}
-	//else stays in place i guess
-      }
-      //else it was empty space or a moving tetrimo
+void gravity() {
+  int xcounter = 0; //counter to iterate with in loops over board
+  int ycounter = 0; //counter to iterate with in loops over board
+  for (ycounter = 14; ycounter >= 0; ycounter--) {
+    for (xcounter = 9; xcounter >= 0; xcounter--) {
+      if (map.tile[ycounter][xcounter] == 2) {
+        //block that is the bottom or has touched another block touching the bottom
+        if (map.tile[ycounter + 1][xcounter] == 0) {
+          map.tile[ycounter + 1][xcounter] = 2;
+          map.tile[ycounter][xcounter] = 0;
+        } //else stays in place i guess
+      } //else it was empty space or a moving tetrimo
       //im thinking we have another method handle tetrimo movements
     }
   }
 }
 
 
-int controlledGravity(){
+int controlledGravity() {
   //print_board();
   int xcounter = 0;
   int ycounter = 0;
   int returntype = 0;
   cur_piece.y = cur_piece.y + 1;
-  for(ycounter = 14; ycounter >= 0; ycounter--){
-    for(xcounter = 9; xcounter >= 0; xcounter--){
-      if(map.tile[ycounter][xcounter] == 1){//block that is the bottom or has touched another block touching the bottom
-	if(ycounter+1 == 15 && map.tile[ycounter+1][xcounter] != 2){
-	  map.tile[ycounter][xcounter] = 0;
-	  map.tile[15][xcounter] = 2;
-	  returntype = -1;
-	}
-	else if(map.tile[ycounter+1][xcounter] == 0){//move down
-	  map.tile[ycounter+1][xcounter] = 1;
-	  map.tile[ycounter][xcounter] = 0;
-	  returntype = 1;
-	}
-	else if(map.tile[ycounter+1][xcounter] == 2){//convert into 2
-	  map.tile[ycounter][xcounter] = 2;
-	  returntype = -1;
-	}
-	else{
-	  returntype = 0;//idk what to do really
-	}
+  for (ycounter = 14; ycounter >= 0; ycounter--) {
+    for (xcounter = 9; xcounter >= 0; xcounter--) {
+      if (map.tile[ycounter][xcounter] == 1) { //block that is the bottom or has touched another block touching the bottom
+        if (ycounter + 1 == 15 && map.tile[ycounter + 1][xcounter] != 2) {
+          map.tile[ycounter][xcounter] = 0;
+          map.tile[15][xcounter] = 2;
+          returntype = -1;
+        } else if (map.tile[ycounter + 1][xcounter] == 0) { //move down
+          map.tile[ycounter + 1][xcounter] = 1;
+          map.tile[ycounter][xcounter] = 0;
+          returntype = 1;
+        } else if (map.tile[ycounter + 1][xcounter] == 2) { //convert into 2
+          map.tile[ycounter][xcounter] = 2;
+          returntype = -1;
+        } else {
+          returntype = 0; //idk what to do really
+        }
       }
     }
   }
@@ -134,14 +131,22 @@ int controlledGravity(){
 
 
 void spawn() {
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
+	    //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	      map.tile[cur_piece.y + j][cur_piece.x + i] = 2;
+      }
+    }
+  }
   next_tet();
   //printf("Current type: %d\n", cur_piece.type);
   cur_piece.type = tets_queue[cur_block_num++];
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
       if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-	map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+	    //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	      map.tile[cur_piece.y + j][cur_piece.x + i] = 1;
       }
     }
   }
@@ -195,9 +200,9 @@ void move_tet(int move_type) {
   struct tet_block tet = cur_piece;
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
-      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-	map.tile[cur_piece.y + j][cur_piece.x + i] = 0;//cur_piece.type + 1;
+      if (tetronimos[cur_piece.type][cur_piece.rotation] & tet_location(i, j)) {
+        //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+        map.tile[cur_piece.y + j][cur_piece.x + i] = 0;
       }
     }
   }
@@ -206,9 +211,9 @@ void move_tet(int move_type) {
   } else if (move_type == 1) { // Right
     tet.x++;
   } else if (move_type == 2) { // Down
-    if (check_place(tet)) {
+    if (check_place(tet)) { // if it can't move
       spawn();
-    } else {
+    } else { // otherwise move down
       tet.y++;
     }
   } else {
@@ -217,12 +222,21 @@ void move_tet(int move_type) {
 
   if (is_tet_legal(tet)) {
     cur_piece = tet; // If the move is valid, replace the board block with moved block
+  } else {
+    for (int i = 0; i < 4; i++) {
+      for (int j = 0; j < 4; j++) {
+      if (tetronimos[cur_piece.type][cur_piece.rotation] & tet_location(i, j)) {
+        //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+        map.tile[cur_piece.y + j][cur_piece.x + i] = 2;
+      }
+    }
+  }
   }
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
-      if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-	map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+      if (tetronimos[cur_piece.type][cur_piece.rotation] & tet_location(i, j)) {
+        //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+        map.tile[cur_piece.y + j][cur_piece.x + i] = 1;
       }
     }
   }
@@ -258,8 +272,8 @@ void rotate_tet(int rot_type) {
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
       if (tetronimos[cur_piece.type][cur_piece.rotation]&tet_location(i, j)) {
-	//printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
-	map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
+	    //printf("X: %d\nY: %d\n", cur_piece.x + i, cur_piece.y + j);
+	    map.tile[cur_piece.y + j][cur_piece.x + i] = 1;//cur_piece.type + 1;
       }
     }
   }
@@ -293,4 +307,21 @@ void print_board(){
     printf("\n");
   }
   printf("\n");
+}
+
+// Checks if the block is overlapping anything. True if not overlapping.
+boolean is_tet_legal(struct tet_block tet) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            int x = tet.x + i;
+            int y = tet.y + j;
+            if (tetronimos[tet.type][tet.rotation]&tet_location(i, j)) {
+                if (x < 0 || x >= 10 || y < 0 || y >= 16) // If the block is out of the board
+                    return 0;
+                if (y >= 0 && map.tile[y][x] > 0)
+                    return 0;
+            }
+        }
+    }
+    return 1;
 }
