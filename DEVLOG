@@ -65,3 +65,6 @@ fixed gravity, clear_row, and added controlled gravity, fixed bugs
 linK -- 2018-01-25 22:33:09
 Added Spawn. Currently only spawns Is.
 
+linK -- 2018-01-25 23:17:40
+Randomized spawning
+
