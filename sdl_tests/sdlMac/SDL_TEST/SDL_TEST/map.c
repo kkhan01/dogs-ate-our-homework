@@ -105,6 +105,7 @@ int controlledGravity(){
   int xcounter = 0;
   int ycounter = 0;
   int returntype = 0;
+  cur_piece.y = cur_piece.y + 1;
   for(ycounter = 14; ycounter >= 0; ycounter--){
     for(xcounter = 9; xcounter >= 0; xcounter--){
       if(map.tile[ycounter][xcounter] == 1){//block that is the bottom or has touched another block touching the bottom
@@ -156,11 +157,11 @@ void next_tet() {
     }
     queue[4].type = tets_queue[cur_block_num++];
     printf("current num: %d\n", cur_block_num);
-    if (cur_block_num == 7)
+    if (cur_block_num >= 7)
         fill_queue();
     if (!is_tet_legal(cur_piece))
         // End Game
-        printf("Game over.\n");
+        printf("GG\n");
 }
 
 void fill_queue() {
@@ -206,7 +207,7 @@ void move_tet(int move_type) {
         tet.x++;
     } else if (move_type == 2) { // Down
         if (check_place(tet)) {
-            
+            spawn();
         } else {
             tet.y++;
         }
@@ -272,6 +273,16 @@ int check_place(struct tet_block tet) {
         return 1;
 }
 
+int game_end(){// 1 for end, 0 for still playing
+  int row;
+  int returntype = 0;
+  for(row = 0; row < 6 && map.tile[row][6]!=0; row++){
+    if(row == 5){
+      returntype = 1;
+    }
+  }
+  return returntype;
+}
 //TEST METHOD, COMMENT OUT USES AT THE END
 void print_board(){
   int i, j;

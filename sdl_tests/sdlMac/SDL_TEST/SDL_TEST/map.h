@@ -37,6 +37,9 @@ extern Map map;
 
 void drawImage(SDL_Texture *image, int x, int y);
 
+void drawText(char *string, int size, int x, int y,
+              int c1, int c2, int c3);
+
 extern SDL_Texture* tetrisBlockTexture;
 
 extern SDL_Texture* unfilledBlockTexture;

@@ -81,10 +81,71 @@ int init()
   return success;
 }
 
+
+int startMenu(){
+    int w = 0;
+    int h = 0;
+    int x, y;
+    
+    TTF_Font *font = TTF_OpenFont("SDL_TEST/fonts/HelveticaNeue Medium.ttf", 36);
+    if (font == NULL)
+    {
+        printf("Failed to load font\n");
+    }
+    
+    SDL_Color color = {0, 0, 0};
+    
+    SDL_Surface *textSurface = TTF_RenderText_Solid(font, "Start", color);
+    
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+    
+    SDL_QueryTexture(textTexture, NULL, NULL, &w, &h);
+    
+    
+    SDL_Rect textLocation = {SCREEN_HEIGHT/2 + w/3, SCREEN_WIDTH/2 - 2 * h, w, h};
+    
+    
+    
+    SDL_Event event;
+    while(1){
+        while(SDL_PollEvent(&event)){
+            switch(event.type){
+                case SDL_QUIT:
+                    SDL_FreeSurface(textSurface);
+                    SDL_DestroyTexture(textTexture);
+                    return 1;
+                case SDL_MOUSEBUTTONDOWN:
+                    x = event.motion.x;
+                    y = event.motion.y;
+                    if(x <= SCREEN_WIDTH/2 + w && x >= SCREEN_WIDTH/2 - w && y >= SCREEN_HEIGHT/2 - h && y <= SCREEN_HEIGHT/2 + h){
+                        SDL_FreeSurface(textSurface);
+                        SDL_DestroyTexture(textTexture);
+                        return 0;
+                    }
+                    break;
+                    
+                    
+            }
+        }
+        SDL_RenderClear(renderer);
+        drawText("TETRIS", 48, SCREEN_WIDTH/2 - w, SCREEN_HEIGHT/2 - 4 * h, 0, 0, 255);
+        SDL_RenderCopy(renderer, textTexture, NULL, &textLocation);
+        SDL_RenderPresent(renderer);
+        
+    }
+
+}
+
+
 //If there's loop for headers, move this
 int loadMedia()
 {
   int success = 1;
+
+  int i = startMenu();
+  if(i == 1){
+      success = 0;
+  }
 
   tetrisBlockTexture = loadTexture("SDL_TEST/sprites/tetrisBlock.png");
   unfilledBlockTexture = loadTexture("SDL_TEST/sprites/unfilledBlock.png");
@@ -176,10 +237,12 @@ void eventHandler()
 
   //Event Handler
   SDL_Event event;
-  //While application is running
-  while (!quit)
-  {
 
+  //first spawn
+  spawn();
+  //While application is running
+  while (!quit && !game_end())
+  {
     if (countdown_seconds <= 0)
     {
       quit = 1;
