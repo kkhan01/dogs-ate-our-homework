@@ -282,7 +282,7 @@ void eventHandler()
       quit = 1;
     }
     //
-    if (countdown % 100 == 0)
+    if (countdown % 75 == 0)
     {
       if (controlledGravity() == -1)
       {
