@@ -402,7 +402,8 @@ void eventHandler()
 
 int main(int argc, char *args[])
 {
-
+  int seed = time(NULL);
+  srand(seed);
   if (!init())
   {
     printf("Failed to initialize!\n");

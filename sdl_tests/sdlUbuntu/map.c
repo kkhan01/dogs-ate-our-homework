@@ -81,13 +81,14 @@ void clear_row(int i){
     counter++;
     //printf("counter: %d\n", counter);
   }*/
-  for (i; i < 15; i++) {
+  for (int j = 0; j < 10; j++)
+    map.tile[15][j] = 0;
+  for (i; i > 0; i--) {
     for (int j = 0; j < 10; j++) {
       map.tile[i][j] = map.tile[i - 1][j];
     }
   }
-  for (int j = 0; j < 10; j++)
-    map.tile[15][j] = 0;
+  cur_piece.y++;
 }
 
 void gravity() {
@@ -224,6 +225,7 @@ void move_tet(int move_type) {
       }
     }
     }
+      sleep(1);
       spawn();
     } else { // otherwise move down
       tet.y++;
