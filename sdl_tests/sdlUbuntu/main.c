@@ -174,7 +174,9 @@ void eventHandler(){
     SDL_Event event;
     //While application is running
     while(!quit){
-        
+      //game logic first
+      gravity();
+      
         //Handle Events
         while(SDL_PollEvent(&event) != 0){
             
