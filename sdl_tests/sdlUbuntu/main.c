@@ -87,7 +87,7 @@ int startMenu(){
     int h = 0;
     int x, y;
     
-    TTF_Font *font = TTF_OpenFont("SDL_TEST/fonts/HelveticaNeue Medium.ttf", 36);
+    TTF_Font *font = TTF_OpenFont("fonts/HelveticaNeue Medium.ttf", 36);
     if (font == NULL)
     {
         printf("Failed to load font\n");
