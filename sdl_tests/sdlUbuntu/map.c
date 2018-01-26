@@ -94,6 +94,7 @@ void gravity(){
   }
 }
 
+
 int controlledGravity(){
   //print_board();
   int xcounter = 0;
@@ -106,12 +107,12 @@ int controlledGravity(){
 	  map.tile[ycounter][xcounter] = 0;
 	  map.tile[15][xcounter] = 2;
 	  returntype = -1;
-	}
+	}/*
 	else if(map.tile[ycounter+1][xcounter] == 0){//move down
 	  map.tile[ycounter+1][xcounter] = 1;
 	  map.tile[ycounter][xcounter] = 0;
 	  returntype = 1;
-	}
+	}*/
 	else if(map.tile[ycounter+1][xcounter] == 2){//convert into 2
 	  map.tile[ycounter][xcounter] = 2;
 	  returntype = -1;
@@ -199,7 +200,11 @@ void move_tet(int move_type) {
     } else if (move_type == 1) { // Right
         tet.x++;
     } else if (move_type == 2) { // Down
-        tet.y++;
+        if (check_place(tet)) {
+            
+        } else {
+            tet.y++;
+        }
     } else {
         printf("You messed up. %d is not a valid move type.", move_type);
     }
@@ -252,6 +257,14 @@ void rotate_tet(int rot_type) {
             }
         }
     }
+}
+
+int check_place(struct tet_block tet) {
+    tet.y++;
+    if (is_tet_legal(tet))
+        return 0;
+    else
+        return 1;
 }
 
 //TEST METHOD, COMMENT OUT USES AT THE END

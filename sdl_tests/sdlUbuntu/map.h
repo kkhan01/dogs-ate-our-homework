@@ -55,4 +55,5 @@ void fill_queue();
 void ran_gen_blocks();
 void move_tet(int); // Moves block if possible. 0-left; 1-right; 2-down
 void rotate_tet(int); // Rotates block if possible. 0-left; 1-right
+int check_place(struct tet_block);
 #endif /* map_h */
