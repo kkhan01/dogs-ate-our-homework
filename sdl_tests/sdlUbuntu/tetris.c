@@ -20,8 +20,6 @@ unsigned int tet_location(int x, int y) {
     return 0b1000000000000000 >> (x + y * 4);
 }
 
-<<<<<<< HEAD
-=======
 /*======== unsigned is_tet_legal ==========
 Inputs:  struct tet_block tet
 Returns: Checks if the block is overlapping anything. True if not overlapping.
@@ -44,7 +42,6 @@ boolean is_tet_legal(struct tet_block tet) {
 Inputs:  struct tet_block tet
 Returns: success or failure based on wher it was able to bounce
 =======================================*/
->>>>>>> 603ea6755b2b332ff2e6e72232dbc9dc6f2a9535
 boolean tet_wall_kick(struct tet_block *tet) {
     tet->x -= 1; // Try to move it left
     if (is_tet_legal(*tet))
