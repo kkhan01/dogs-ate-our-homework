@@ -20,24 +20,6 @@ unsigned int tet_location(int x, int y) {
     return 0b1000000000000000 >> (x + y * 4);
 }
 
-/*======== unsigned is_tet_legal ==========
-Inputs:  struct tet_block tet
-Returns: Checks if the block is overlapping anything. True if not overlapping.
-=======================================*/
-boolean is_tet_legal(struct tet_block tet) {
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            int x = tet.x + i;
-            int y = tet.y + j;
-            if (tetronimos[tet.type][tet.rotation]&tet_location(i, j)) {
-                if (x < 0 || x >= 10 || y < 0 || y >= 20) // If the block is our of the board
-                    return 0;
-            }
-        }
-    }
-    return 1;
-}
-
 /*======== unsigned tet_wall_kick ==========
 Inputs:  struct tet_block tet
 Returns: success or failure based on wher it was able to bounce
